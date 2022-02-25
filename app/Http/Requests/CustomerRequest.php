@@ -50,6 +50,12 @@ class CustomerRequest extends FormRequest
             'website' => [
                 'nullable',
             ],
+            'gst' => [
+                'nullable',
+            ],
+            'pan' => [
+                'nullable',
+            ],
             'prefix' => [
                 'nullable',
             ],
@@ -140,6 +146,8 @@ class CustomerRequest extends FormRequest
                 'company_name',
                 'contact_name',
                 'website',
+                'gst',
+                'pan',
                 'enable_portal',
                 'estimate_prefix',
                 'payment_prefix',

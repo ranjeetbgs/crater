@@ -46,6 +46,9 @@ class CustomerResource extends JsonResource
             'currency' => $this->when($this->currency()->exists(), function () {
                 return new CurrencyResource($this->currency);
             }),
+            // 'gst' => $this->gst,
+            // 'pan' => $this->pan,
+
         ];
     }
 }
