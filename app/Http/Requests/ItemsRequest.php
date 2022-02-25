@@ -30,6 +30,9 @@ class ItemsRequest extends FormRequest
             'price' => [
                 'required',
             ],
+            'hsn_sac' => [
+                'nullable',
+            ],
             'unit_id' => [
                 'nullable',
             ],
