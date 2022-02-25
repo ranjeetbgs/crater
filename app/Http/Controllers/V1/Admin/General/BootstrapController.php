@@ -58,6 +58,22 @@ class BootstrapController extends Controller
             'login_page_description'
         ]);
 
+        $current_company_settings['has_transport_option'] = false;
+        $current_company_settings['place_of_supply'] = 10;
+        $current_company_settings['tax_formates'] = [
+                ['code'=>'no_tax', 'label'=>'Exempted'],
+                ['code'=>'igst', 'label'=>'IGST'],
+                ['code'=>'csgst', 'label'=>'CGST + SGST']
+            ];
+            
+        $current_company_settings['invoice_types'] = [
+                ['code'=>'tax_invoice', 'label'=>'Tax Invoice'],
+                ['code'=>'bill_of_supply', 'label'=>'Bill Of Supply'],
+                ['code'=>'sez_with_tax', 'label'=>'SEZ Invoice with Tax'],
+                ['code'=>'sez_without_tax', 'label'=>'SEZ Invoice without Tax'],
+            ];
+            
+
         return response()->json([
             'current_user' => new UserResource($current_user),
             'current_user_settings' => $current_user_settings,
