@@ -33,8 +33,8 @@
     <BaseInputGrid class=" md:grid-cols-3">
     <BaseInputGroup :label="$tc('invoices.type')">
           <BaseMultiselect
-            :options="[{name:'Yes',code:1},{name:'No',code:0}]"
-            label="name"
+            :options="company.invoice_types"
+            label="label"
             value-prop="code"
             track-by="code"
             open-direction="right"
@@ -42,8 +42,8 @@
         </BaseInputGroup>
         <BaseInputGroup :label="$tc('invoices.tax_format')">
           <BaseMultiselect
-            :options="[{name:'Yes',code:1},{name:'No',code:0}]"
-            label="name"
+            :options="company.tax_formats"
+            label="label"
             value-prop="code"
             track-by="code"
             open-direction="right"
@@ -146,6 +146,7 @@
     
     
     </BaseInputGrid>
+    <div v-if="company.has_transport_option">
     <h4 class="col-span-12 mt-4 mb-2">Transport Detail</h4>
     <BaseInputGrid class=" md:grid-cols-3">
       <BaseInputGroup
@@ -195,12 +196,14 @@
       </BaseInputGroup>
     </BaseInputGrid>
     </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import ExchangeRateConverter from '@/scripts/admin/components/estimate-invoice-common/ExchangeRateConverter.vue'
 import { useInvoiceStore } from '@/scripts/admin/stores/invoice'
+import { useCompanyStore } from '@/scripts/admin/stores/company'
 
 const props = defineProps({
   v: {
@@ -218,4 +221,5 @@ const props = defineProps({
 })
 
 const invoiceStore = useInvoiceStore()
+const company = useCompanyStore().selectedCompanySettings;
 </script>
