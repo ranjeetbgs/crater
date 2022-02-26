@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGstToCustomersTable extends Migration
+class AddFieldsToItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddGstToCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
+        Schema::table('items', function (Blueprint $table) {
             //
-            $table->string('gst')->nullable();
-            $table->string('pan')->nullable();
+            $table->string('hsn_sac')->nullable();
+
         });
     }
 
@@ -27,10 +27,10 @@ class AddGstToCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
+        Schema::table('items', function (Blueprint $table) {
             //
-            $table->dropColumn('gst');
-            $table->dropColumn('pan');
+            $table->dropColumn('hsn_sac');
+
         });
     }
 }
