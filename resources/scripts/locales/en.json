@@ -344,6 +344,7 @@
     "item": {
       "title": "Item Title",
       "description": "Description",
+      "hsn_sac": "HSN/SAC",
       "quantity": "Quantity",
       "price": "Price",
       "discount": "Discount",
@@ -444,6 +445,7 @@
     "item": {
       "title": "Item Title",
       "description": "Description",
+      "hsn_sac": "HSN/SAC",
       "quantity": "Quantity",
       "price": "Price",
       "discount": "Discount",

@@ -1,7 +1,8 @@
 <template>
   <table class="text-center item-table min-w-full">
     <colgroup>
-      <col style="width: 40%; min-width: 280px" />
+      <col style="width: 30%; min-width: 240px" />
+      <col style="width: 10%; min-width: 120px" />
       <col style="width: 10%; min-width: 120px" />
       <col style="width: 15%; min-width: 120px" />
       <col
@@ -47,9 +48,29 @@
             <BaseContentPlaceholdersText :lines="1" class="w-16 h-5" />
           </BaseContentPlaceholders>
           <span v-else>
+            {{ $t('invoices.item.hsn_sac') }}
+          </span>
+        </th>
+        <th
+          class="
+            px-5
+            py-3
+            text-sm
+            not-italic
+            font-medium
+            leading-5
+            text-right text-gray-700
+            border-t border-b border-gray-200 border-solid
+          "
+        >
+          <BaseContentPlaceholders v-if="isLoading">
+            <BaseContentPlaceholdersText :lines="1" class="w-16 h-5" />
+          </BaseContentPlaceholders>
+          <span v-else>
             {{ $t('invoices.item.quantity') }}
           </span>
         </th>
+        
         <th
           class="
             px-5

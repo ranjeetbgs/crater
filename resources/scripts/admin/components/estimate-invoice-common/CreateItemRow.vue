@@ -1,9 +1,10 @@
 <template>
   <tr class="box-border bg-white border border-gray-200 border-solid rounded-b">
-    <td colspan="5" class="p-0 text-left align-top">
+    <td colspan="6" class="p-0 text-left align-top">
       <table class="w-full">
         <colgroup>
-          <col style="width: 40%; min-width: 280px" />
+          <col style="width: 30%; min-width: 240px" />
+          <col style="width: 10%; min-width: 120px" />
           <col style="width: 10%; min-width: 120px" />
           <col style="width: 15%; min-width: 120px" />
           <col
@@ -45,6 +46,14 @@
                   @select="onSelectItem"
                 />
               </div>
+            </td>
+            <td class="px-5 py-4 text-right align-top">
+              <BaseInput
+                v-model="itemData.hsn_sac"
+                :content-loading="loading"
+                small
+                @change="syncItemToStore()"
+              />
             </td>
             <td class="px-5 py-4 text-right align-top">
               <BaseInput
@@ -151,7 +160,9 @@
           </tr>
           <tr v-if="store[storeProp].tax_per_item === 'YES'">
             <td class="px-5 py-4 text-left align-top" />
-            <td colspan="4" class="px-5 py-4 text-left align-top">
+              
+              <td colspan="2" class="px-5 py-4 text-left align-top" />
+            <td colspan="3" class="px-5 py-4 text-left align-top">
               <BaseContentPlaceholders v-if="loading">
                 <BaseContentPlaceholdersText
                   :lines="1"
@@ -431,8 +442,10 @@ function searchVal(val) {
 }
 
 function onSelectItem(itm) {
+  console.log(itm)
   props.store.$patch((state) => {
     state[props.storeProp].items[props.index].name = itm.name
+    state[props.storeProp].items[props.index].hsn_sac = itm.hsn_sac
     state[props.storeProp].items[props.index].price = itm.price
     state[props.storeProp].items[props.index].item_id = itm.id
     state[props.storeProp].items[props.index].description = itm.description
