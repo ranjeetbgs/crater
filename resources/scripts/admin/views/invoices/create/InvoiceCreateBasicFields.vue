@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-12 gap-4 mt-6 mb-8">
+  <div class="grid grid-cols-12 gap-8 mt-6 mb-8">
     <div class="col-span-12 lg:col-span-5 ">
     <BaseCustomerSelectPopup
       v-model="invoiceStore.newInvoice.customer"

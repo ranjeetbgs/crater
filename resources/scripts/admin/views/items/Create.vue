@@ -35,6 +35,23 @@
           </BaseInputGroup>
 
           <BaseInputGroup
+            :label="$t('items.hsn_sac')"
+            :content-loading="isFetchingInitialData"
+            :error="
+              v$.currentItem.hsn_sac.$error &&
+              v$.currentItem.hsn_sac.$errors[0].$message
+            "
+           
+          >
+            <BaseInput
+              v-model="itemStore.currentItem.hsn_sac"
+              :content-loading="isFetchingInitialData"
+              :invalid="v$.currentItem.hsn_sac.$error"
+              @input="v$.currentItem.hsn_sac.$touch()"
+            />
+          </BaseInputGroup>
+
+          <BaseInputGroup
             :label="$t('items.price')"
             :content-loading="isFetchingInitialData"
           >
@@ -222,6 +239,15 @@ const rules = computed(() => {
           t('validation.name_min_length', { count: 3 }),
           minLength(3)
         ),
+      },
+
+      hsn_sac: {
+        maxLength: helpers.withMessage(
+          t('validation.invalid_hsn', { count: 8 }),
+          maxLength(8)
+        ),
+        numeric: helpers.withMessage(t('validation.numbers_only'), numeric),
+        
       },
 
       description: {
