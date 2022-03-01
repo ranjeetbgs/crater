@@ -60,7 +60,7 @@ class BootstrapController extends Controller
 
         $current_company_settings['has_transport_option'] = false;
         $current_company_settings['place_of_supply'] = 10;
-        $current_company_settings['tax_formates'] = [
+        $current_company_settings['tax_formats'] = [
                 ['code'=>'no_tax', 'label'=>'Exempted'],
                 ['code'=>'igst', 'label'=>'IGST'],
                 ['code'=>'csgst', 'label'=>'CGST + SGST']
