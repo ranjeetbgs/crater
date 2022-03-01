@@ -44,7 +44,8 @@ return [
     | server should take while trying to determine whether to use the
     | manifest or the server in a local environment.
     */
-    'ping_timeout' => .1,
+    'ping_timeout' => 10,
+    'ping_url' => null,
 
     /*
     |--------------------------------------------------------------------------

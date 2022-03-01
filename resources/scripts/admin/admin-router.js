@@ -161,7 +161,8 @@ export default [
   },
   {
     path: '/admin',
-    component: LayoutBasic,
+    name: 'admin', 
+    component: LayoutBasic, 
     meta: { requiresAuth: true },
     children: [
       {
