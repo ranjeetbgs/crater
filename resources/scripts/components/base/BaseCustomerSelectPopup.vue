@@ -67,12 +67,12 @@
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-8 mt-2">
+      <div class="grid grid-cols-2 gap-2 text-sm ">
         <div v-if="selectedCustomer.billing" class="flex flex-col">
+          <p class="flex flex-col">GSTIN: GST123456</p> 
           <label
             class="
               mb-1
-              text-sm
               font-medium
               text-left text-gray-400
               uppercase
@@ -88,12 +88,12 @@
           >
             <label
               v-if="selectedCustomer.billing.name"
-              class="relative w-11/12 text-sm truncate"
+              class="relative w-11/12  truncate"
             >
               {{ selectedCustomer.billing.name }}
             </label>
 
-            <label class="relative w-11/12 text-sm truncate">
+            <label class="relative w-11/12 truncate">
               <span v-if="selectedCustomer.billing.city">
                 {{ selectedCustomer.billing.city }}
               </span>
@@ -111,7 +111,7 @@
             </label>
             <label
               v-if="selectedCustomer.billing.zip"
-              class="relative w-11/12 text-sm truncate"
+              class="relative w-11/12  truncate"
             >
               {{ selectedCustomer.billing.zip }}
             </label>
@@ -122,8 +122,6 @@
           <label
             class="
               mb-1
-              text-sm
-              font-medium
               text-left text-gray-400
               uppercase
               whitespace-nowrap
@@ -138,12 +136,12 @@
           >
             <label
               v-if="selectedCustomer.shipping.name"
-              class="relative w-11/12 text-sm truncate"
+              class="relative w-11/12 truncate"
             >
               {{ selectedCustomer.shipping.name }}
             </label>
 
-            <label class="relative w-11/12 text-sm truncate">
+            <label class="relative w-11/12 truncate">
               <span v-if="selectedCustomer.shipping.city">
                 {{ selectedCustomer.shipping.city }}
               </span>
@@ -161,7 +159,7 @@
             </label>
             <label
               v-if="selectedCustomer.shipping.zip"
-              class="relative w-11/12 text-sm truncate"
+              class="relative w-11/12 truncate"
             >
               {{ selectedCustomer.shipping.zip }}
             </label>

@@ -28,9 +28,9 @@ class TaxTypeRequest extends FormRequest
         $rules = [
             'name' => [
                 'required',
-                Rule::unique('tax_types')
-                ->where('type', TaxType::TYPE_GENERAL)
-                ->where('company_id', $this->header('company'))
+                // Rule::unique('tax_types')
+                // ->where('type', TaxType::TYPE_GENERAL)
+                // ->where('company_id', $this->header('company'))
             ],
             'percent' => [
                 'required',

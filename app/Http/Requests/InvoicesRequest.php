@@ -73,6 +73,9 @@ class InvoicesRequest extends FormRequest
             'items.*.description' => [
                 'nullable',
             ],
+            'items.*.hsn_sac' => [
+                'nullable',
+            ],
             'items.*.name' => [
                 'required',
             ],
@@ -131,6 +134,21 @@ class InvoicesRequest extends FormRequest
                 'base_tax' => $this->tax * $exchange_rate,
                 'base_due_amount' => $this->total * $exchange_rate,
                 'currency_id' => $currency,
+                'meta'=> json_encode($this->only([
+                                                    'reverse_charge',
+                                                    'place_of_supply',
+                                                    'invoice_type',
+                                                    'tax_format',
+                                                    'delivery_date',
+                                                    'ref_number',
+                                                    'po_number',
+                                                    'chalan_number',
+                                                    'e_way_number',
+                                                    'gr_number',
+                                                    'transport_id',
+                                                    'transport_name',
+                                                    'vehicle_number'
+                                                    ]))
             ])
             ->toArray();
     }

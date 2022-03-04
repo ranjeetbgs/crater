@@ -35,6 +35,7 @@ class TaxSummaryReportController extends Controller
             ->whereInvoicesFilters($request->only(['from_date', 'to_date']))
             ->taxAttributes()
             ->get();
+        // dd($taxTypes);
 
         $totalAmount = 0;
         foreach ($taxTypes as $taxType) {

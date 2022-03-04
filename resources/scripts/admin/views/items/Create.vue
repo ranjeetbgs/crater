@@ -94,6 +94,7 @@
             :label="$t('items.taxes')"
             :content-loading="isFetchingInitialData"
           >
+          
             <BaseMultiselect
               v-model="taxes"
               :content-loading="isFetchingInitialData"
@@ -219,7 +220,9 @@ const pageTitle = computed(() =>
 )
 
 const getTaxTypes = computed(() => {
-  return taxTypeStore.taxTypes.map((tax) => {
+  let taxTypes = taxTypeStore.taxTypes.filter(tax => !['sgst','cgst'].includes(tax.name.toLowerCase()));
+  return taxTypes.map((tax) => {
+    console.log(tax.name);
     return {
       ...tax,
       tax_type_id: tax.id,

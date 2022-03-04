@@ -129,8 +129,32 @@
             store-prop="newInvoice"
             tax-popup-type="invoice"
           />
+
+          
         </div>
+
+        <BaseButton
+            :loading="isSaving"
+            :disabled="isSaving"
+            variant="primary"
+            type="submit"
+            class="float-right"
+          >
+            <template #left="slotProps">
+              <BaseIcon
+                v-if="!isSaving"
+                name="SaveIcon"
+                :class="slotProps.class"
+              />
+            </template>
+            {{ $t('invoices.save_invoice') }}
+          </BaseButton>
+
+          
+       
       </BaseScrollPane>
+
+      
     </form>
   </BasePage>
 </template>
@@ -183,6 +207,8 @@ const invoiceNoteFieldList = ref([
   'invoice',
   'invoiceCustom',
 ])
+
+
 
 let isLoadingContent = computed(
   () => invoiceStore.isFetchingInvoice || invoiceStore.isFetchingInitialSettings

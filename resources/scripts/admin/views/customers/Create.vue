@@ -99,6 +99,30 @@
             </BaseInputGroup>
 
             <BaseInputGroup
+              :label="$t('customers.gst')"
+              :content-loading="isFetchingInitialData"
+            >
+              <BaseInput
+                v-model.trim="customerStore.currentCustomer.gst"
+                :content-loading="isFetchingInitialData"
+                type="text"
+                name="gst"
+              />
+            </BaseInputGroup>
+
+            <BaseInputGroup
+              :label="$t('customers.pan')"
+              :content-loading="isFetchingInitialData"
+            >
+              <BaseInput
+                v-model.trim="customerStore.currentCustomer.pan"
+                :content-loading="isFetchingInitialData"
+                type="text"
+                name="pan"
+              />
+            </BaseInputGroup>
+
+            <BaseInputGroup
               :label="$t('customers.primary_currency')"
               :content-loading="isFetchingInitialData"
               :error="
@@ -180,7 +204,7 @@
                 class="mt-1 flex"
               />
             </div>
-
+            
             <BaseInputGroup
               v-if="customerStore.currentCustomer.enable_portal"
               :content-loading="isFetchingInitialData"
@@ -190,6 +214,26 @@
             >
               <CopyInputField :token="getCustomerPortalUrl" />
             </BaseInputGroup>
+
+            <BaseInputGroup
+            v-if="customerStore.currentCustomer.enable_portal"
+              :error="
+                v$.currentCustomer.email.$error &&
+                v$.currentCustomer.email.$errors[0].$message
+              "
+              :content-loading="isFetchingInitialData"
+              :label="$t('customers.email')"
+            >
+              <BaseInput
+                v-model.trim="customerStore.currentCustomer.email"
+                :content-loading="isFetchingInitialData"
+                type="text"
+                name="email"
+                :invalid="v$.currentCustomer.email.$error"
+                @input="v$.currentCustomer.email.$touch()"
+              />
+            </BaseInputGroup>
+            <BaseInputGroup/>
 
             <BaseInputGroup
               v-if="customerStore.currentCustomer.enable_portal"
@@ -303,6 +347,7 @@
             </BaseInputGroup>
 
             <BaseInputGroup
+            v-if="customerStore.currentCustomer.billing.country_id != 101"
               :label="$t('customers.state')"
               :content-loading="isFetchingInitialData"
             >
@@ -311,6 +356,24 @@
                 :content-loading="isFetchingInitialData"
                 name="billing.state"
                 type="text"
+              />
+            </BaseInputGroup>
+
+            <BaseInputGroup 
+            v-if="customerStore.currentCustomer.billing.country_id == 101"
+            :label="$tc('customers.state')"
+            :content-loading="isFetchingInitialData"
+            >
+              <BaseMultiselect
+                v-model="customerStore.currentCustomer.billing.state"
+                :options="globalStore.config.states"
+                label="name"
+                value-prop="code"
+                :can-deselect="true"
+                :can-clear="false"
+                searchable
+                track-by="name"
+                open-direction="right"
               />
             </BaseInputGroup>
 
@@ -460,6 +523,7 @@
             </BaseInputGroup>
 
             <BaseInputGroup
+              v-if="customerStore.currentCustomer.shipping.country_id != 101"
               :label="$t('customers.state')"
               :content-loading="isFetchingInitialData"
             >
@@ -470,6 +534,25 @@
                 type="text"
               />
             </BaseInputGroup>
+
+            <BaseInputGroup 
+            v-if="customerStore.currentCustomer.shipping.country_id == 101"
+            :label="$tc('customers.state')"
+            :content-loading="isFetchingInitialData"
+            >
+              <BaseMultiselect
+                v-model="customerStore.currentCustomer.shipping.state"
+                :options="globalStore.config.states"
+                label="name"
+                value-prop="code"
+                :can-deselect="true"
+                :can-clear="false"
+                searchable
+                track-by="name"
+                open-direction="right"
+              />
+            </BaseInputGroup>
+
 
             <BaseInputGroup
               :content-loading="isFetchingInitialData"

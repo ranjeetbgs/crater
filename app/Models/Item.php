@@ -171,4 +171,9 @@ class Item extends Model
 
         return Item::with('taxes')->find($this->id);
     }
+
+    public function getTaxPerItemAttribute($value)
+    {
+        return 1;
+    }
 }

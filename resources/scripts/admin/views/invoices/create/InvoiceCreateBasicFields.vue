@@ -10,20 +10,22 @@
     <BaseInputGrid class="col-span-12 md:grid-cols-2 mt-6">
       <BaseInputGroup :label="$tc('invoices.reverse_charge')">
           <BaseMultiselect
-            :options="[{name:'Yes',code:1},{name:'No',code:0}]"
-            label="name"
-            value-prop="code"
-            track-by="code"
+            :options="['Yes','No']"
+            v-model="invoiceStore.newInvoice.reverse_charge"
             open-direction="right"
           />
 
         </BaseInputGroup>
         <BaseInputGroup :label="$tc('invoices.place_of_supply')">
           <BaseMultiselect
-            :options="[{name:'Yes',code:1},{name:'No',code:0}]"
+            v-model="invoiceStore.newInvoice.place_of_supply"
+            :options="states"
             label="name"
             value-prop="code"
-            track-by="code"
+            :can-deselect="true"
+            :can-clear="false"
+            searchable
+            track-by="name"
             open-direction="right"
           />
         </BaseInputGroup>
@@ -34,6 +36,7 @@
     <BaseInputGroup :label="$tc('invoices.type')">
           <BaseMultiselect
             :options="company.invoice_types"
+            v-model="invoiceStore.newInvoice.invoice_type"
             label="label"
             value-prop="code"
             track-by="code"
@@ -43,6 +46,7 @@
         <BaseInputGroup :label="$tc('invoices.tax_format')">
           <BaseMultiselect
             :options="company.tax_formats"
+            v-model="invoiceStore.newInvoice.tax_format"
             label="label"
             value-prop="code"
             track-by="code"
@@ -154,7 +158,7 @@
         :content-loading="isLoading"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.e_way_number"
           :content-loading="isLoading"
         />
       </BaseInputGroup>
@@ -163,7 +167,7 @@
         :content-loading="isLoading"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.gr_number"
           :content-loading="isLoading"
         />
       </BaseInputGroup>
@@ -172,7 +176,7 @@
         :content-loading="isLoading"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.transport_id"
           :content-loading="isLoading"
         />
       </BaseInputGroup>
@@ -181,7 +185,7 @@
         :content-loading="isLoading"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.transport_name"
           :content-loading="isLoading"
         />
       </BaseInputGroup>
@@ -190,7 +194,7 @@
         :content-loading="isLoading"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.vehicle_number"
           :content-loading="isLoading"
         />
       </BaseInputGroup>
@@ -204,6 +208,7 @@
 import ExchangeRateConverter from '@/scripts/admin/components/estimate-invoice-common/ExchangeRateConverter.vue'
 import { useInvoiceStore } from '@/scripts/admin/stores/invoice'
 import { useCompanyStore } from '@/scripts/admin/stores/company'
+import { useGlobalStore } from '@/scripts/admin/stores/global'
 
 const props = defineProps({
   v: {
@@ -222,4 +227,6 @@ const props = defineProps({
 
 const invoiceStore = useInvoiceStore()
 const company = useCompanyStore().selectedCompanySettings;
+const states = useGlobalStore().config.states;
+
 </script>
