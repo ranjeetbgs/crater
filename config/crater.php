@@ -71,6 +71,7 @@ return [
         ["code" => "cs", "name" => "Czech"],
         ["code" => "el", "name" => "Greek"],
         ["code" => "hr", "name" => "Crotian"],
+        ["code" => "hi", "name" => "हिन्दी"],
     ],
 
     /*
