@@ -68,13 +68,11 @@
 
       <BaseInputGroup
         :label="$t('invoices.invoice_date')"
-        :content-loading="isLoading"
         required
         :error="v.invoice_date.$error && v.invoice_date.$errors[0].$message"
       >
         <BaseDatePicker
           v-model="invoiceStore.newInvoice.invoice_date"
-          :content-loading="isLoading"
           :calendar-button="true"
           calendar-button-icon="calendar"
         />
@@ -82,22 +80,18 @@
 
       <BaseInputGroup
         :label="$t('invoices.due_date')"
-        :content-loading="isLoading"
       >
         <BaseDatePicker
           v-model="invoiceStore.newInvoice.due_date"
-          :content-loading="isLoading"
           :calendar-button="true"
           calendar-button-icon="calendar"
         />
       </BaseInputGroup>
       <BaseInputGroup
         :label="$t('invoices.delivery_date')"
-        :content-loading="isLoading"
       >
         <BaseDatePicker
           v-model="invoiceStore.newInvoice.delivery_date"
-          :content-loading="isLoading"
           :calendar-button="true"
           calendar-button-icon="calendar"
         />
@@ -107,31 +101,25 @@
 
       <BaseInputGroup
         :label="$t('invoices.ref_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.ref_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
 
       <BaseInputGroup
         :label="$t('invoices.po_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.po_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
 
       <BaseInputGroup
         :label="$t('invoices.chalan_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.chalan_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
 
@@ -150,52 +138,42 @@
     
     
     </BaseInputGrid>
-    <div v-if="company.has_transport_option">
+    <div v-if="company.has_transport_option =='YES'">
     <h4 class="col-span-12 mt-4 mb-2">Transport Detail</h4>
     <BaseInputGrid class=" md:grid-cols-3">
       <BaseInputGroup
         :label="$t('invoices.transport.e_way_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.e_way_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
       <BaseInputGroup
         :label="$t('invoices.transport.gr_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.gr_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
       <BaseInputGroup
         :label="$t('invoices.transport.id')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.transport_id"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
       <BaseInputGroup
         :label="$t('invoices.transport.name')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.transport_name"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
       <BaseInputGroup
         :label="$t('invoices.transport.vehicle_number')"
-        :content-loading="isLoading"
       >
         <BaseInput
           v-model="invoiceStore.newInvoice.vehicle_number"
-          :content-loading="isLoading"
         />
       </BaseInputGroup>
     </BaseInputGrid>

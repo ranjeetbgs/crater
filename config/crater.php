@@ -131,7 +131,7 @@ return [
             'name' => 'Company information',
             'link' => '/admin/settings/company-info',
             'icon' => 'OfficeBuildingIcon',
-            'owner_only' => true,
+            'owner_only' => false,
             'ability' => '',
             'model' => ''
         ],

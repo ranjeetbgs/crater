@@ -32,6 +32,12 @@ class CompanyRequest extends FormRequest
             'slug' => [
                 'nullable'
             ],
+            'gst' => [
+                'nullable'
+            ],
+            'pan' => [
+                'nullable'
+            ],
             'address.country_id' => [
                 'required',
             ],
@@ -43,7 +49,7 @@ class CompanyRequest extends FormRequest
         return collect($this->validated())
             ->only([
                 'name',
-                'slug'
+                'slug','gst','pan'
             ])
             ->toArray();
     }

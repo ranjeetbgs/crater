@@ -60,7 +60,7 @@ class BootstrapController extends Controller
             'copyright_text'
         ]);
 
-        $current_company_settings['has_transport_option'] = true;
+        // $current_company_settings['has_transport_option'] = true;
         $current_company_settings['place_of_supply'] = 10;
         $current_company_settings['tax_formats'] = [
                 ['code'=>'no_tax', 'label'=>'Exempted'],

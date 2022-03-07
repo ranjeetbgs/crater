@@ -46,6 +46,7 @@
             :invalid="v$.address.country_id.$error"
             :options="globalStore.countries"
             value-prop="id"
+            :disabled="true"
             :can-deselect="true"
             :can-clear="false"
             searchable
@@ -54,10 +55,33 @@
         </BaseInputGroup>
 
         <BaseInputGroup :label="$tc('settings.company_info.state')">
-          <BaseInput
+          <BaseMultiselect
             v-model="companyForm.address.state"
-            name="state"
+            :options="globalStore.config.states"
+            label="name"
+            value-prop="code"
+            :can-deselect="true"
+            :can-clear="false"
+            searchable
+            track-by="name"
+            open-direction="right"
+          />
+        </BaseInputGroup>
+
+        <BaseInputGroup :label="$t('customers.gst')">
+          <BaseInput
+            v-model.trim="companyForm.gst"
             type="text"
+            name="gst"
+          />
+        </BaseInputGroup>
+
+        <BaseInputGroup :label="$t('customers.pan')" >
+          <BaseInput
+            v-model.trim="companyForm.pan"
+            :content-loading="isFetchingInitialData"
+            type="text"
+            name="pan"
           />
         </BaseInputGroup>
 
@@ -161,11 +185,13 @@ let isSaving = ref(false)
 const companyForm = reactive({
   name: null,
   logo: null,
+  gst:'',
+  pan:'',
   address: {
     address_street_1: '',
     address_street_2: '',
     website: '',
-    country_id: null,
+    country_id: 101,
     state: '',
     city: '',
     phone: '',

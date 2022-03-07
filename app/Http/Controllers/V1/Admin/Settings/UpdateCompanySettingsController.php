@@ -23,7 +23,9 @@ class UpdateCompanySettingsController extends Controller
         $companyCurrency = CompanySetting::getSetting('currency', $request->header('company'));
         $data = $request->settings;
 
-        if ($companyCurrency !== $data['currency'] && $company->hasTransactions()) {
+        $data = array_except($data, ['tax_formats', 'invoice_types']);
+
+        if ($companyCurrency !== @$data['currency'] && $company->hasTransactions()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Cannot update company currency after transactions are created.'

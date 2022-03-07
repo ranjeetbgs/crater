@@ -167,6 +167,12 @@
           :title="$t('settings.preferences.discount_per_item')"
           :description="$t('settings.preferences.discount_setting_description')"
         />
+
+        <BaseSwitchSection
+          v-model="hasTransportOption"
+          :title="$t('settings.preferences.transport_option')"
+          :description="$t('settings.preferences.transport_option_description')"
+        />
       </ul>
     </BaseSettingCard>
   </form>
@@ -231,6 +237,29 @@ const discountPerItemField = computed({
     })
   },
 })
+
+const hasTransportOption = computed({
+  get: () => {
+    return settingsForm.has_transport_option === 'YES'
+  },
+  set: async (newValue) => {
+    const value = newValue ? 'YES' : 'NO'
+
+    let data = {
+      settings: {
+        has_transport_option: value,
+      },
+    }
+
+    settingsForm.has_transport_option = value
+
+    await companyStore.updateCompanySettings({
+      data,
+      message: 'general.setting_updated',
+    })
+  },
+})
+
 
 const expirePdfField = computed({
   get: () => {
