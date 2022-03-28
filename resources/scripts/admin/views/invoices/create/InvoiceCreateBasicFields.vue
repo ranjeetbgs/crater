@@ -101,10 +101,18 @@
 
       <BaseInputGroup
         :label="$t('invoices.ref_number')"
+        :error="
+          v.reference_number.$error && v.reference_number.$errors[0].$message
+        "
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.ref_number"
-        />
+          v-model="invoiceStore.newInvoice.reference_number"
+          @input="v.reference_number.$touch()"
+        >
+          <template #left="slotProps">
+            <BaseIcon name="HashtagIcon" :class="slotProps.class" />
+          </template>
+        </BaseInput>
       </BaseInputGroup>
 
       <BaseInputGroup
@@ -116,12 +124,14 @@
       </BaseInputGroup>
 
       <BaseInputGroup
-        :label="$t('invoices.chalan_number')"
+        :label="$t('invoices.challan_number')"
       >
         <BaseInput
-          v-model="invoiceStore.newInvoice.chalan_number"
+          v-model="invoiceStore.newInvoice.challan_number"
         />
       </BaseInputGroup>
+
+      
 
       <ExchangeRateConverter
         :store="invoiceStore"

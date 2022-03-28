@@ -241,25 +241,25 @@ export default [
           {
             path: 'company-info',
             name: 'company.info',
-            meta: { isOwner: true },
+            meta: { ability: abilities.MANAGE_COMPANY },
             component: CompanyInfo,
           },
           {
             path: 'preferences',
             name: 'preferences',
-            meta: { isOwner: true },
+            meta: { ability: abilities.MANAGE_COMPANY },
             component: Preferences,
           },
           {
             path: 'customization',
             name: 'customization',
-            meta: { isOwner: true },
+            meta: { ability: abilities.MANAGE_COMPANY },
             component: Customization,
           },
           {
             path: 'notifications',
             name: 'notifications',
-            meta: { isOwner: true },
+            meta: { ability: abilities.MANAGE_COMPANY },
             component: Notifications,
           },
           {

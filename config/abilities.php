@@ -404,6 +404,11 @@ return [
             "model" => null,
         ],
         [
+            "name" => "manage company",
+            "ability" => "manage-company",
+            "model" => null,
+        ],
+        [
             "name" => "view all notes",
             "ability" => "view-all-notes",
             "model" => Note::class,

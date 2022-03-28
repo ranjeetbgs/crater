@@ -123,6 +123,7 @@
       xl:w-64
       md:fixed md:flex md:flex-col md:inset-y-0
       pt-16
+      no-scrollbar
     "
   >
     <div

@@ -36,7 +36,7 @@
       </div>
       <MainLogo
         class="
-          absolute
+          absolute invisible
           block
           h-auto
           max-w-full

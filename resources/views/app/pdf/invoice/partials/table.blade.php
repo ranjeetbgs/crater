@@ -1,10 +1,11 @@
 <table width="100%" class="items-table" cellspacing="0" border="0">
     <tr class="item-table-heading-row">
         <th width="2%" class="pr-20 text-right item-table-heading">#</th>
-        <th width="40%" class="pl-0 text-left item-table-heading">@lang('pdf_items_label')</th>
+        <th width="25%" class="pl-0 text-left item-table-heading">@lang('pdf_items_label')</th>
         @foreach($customFields as $field)
             <th class="text-right item-table-heading">{{ $field->label }}</th>
         @endforeach
+        <th class="pr-20 text-right item-table-heading">@lang('pdf_hsn_sac_label')</th>
         <th class="pr-20 text-right item-table-heading">@lang('pdf_quantity_label')</th>
         <th class="pr-20 text-right item-table-heading">@lang('pdf_price_label')</th>
         @if($invoice->discount_per_item === 'YES')
@@ -38,15 +39,24 @@
                     {{ $item->getCustomFieldValueBySlug($field->slug) }}
                 </td>
             @endforeach
+
+            <td
+                class="pr-20 text-right item-cell"
+                style="vertical-align: top;"
+            >
+                {{$item->hsn_sac}} 
+            </td>
+            
             <td
                 class="pr-20 text-right item-cell"
                 style="vertical-align: top;"
             >
                 {{$item->quantity}} @if($item->unit_name) {{$item->unit_name}} @endif
             </td>
+            
             <td
                 class="pr-20 text-right item-cell"
-                style="vertical-align: top;"
+                style="vertical-align: top; min-width:100px;"
             >
                 {!! format_money_pdf($item->price, $invoice->customer->currency) !!}
             </td>
@@ -68,15 +78,19 @@
             @if($invoice->tax_per_item === 'YES')
                 <td
                     class="pl-10 text-right item-cell"
-                    style="vertical-align: top;"
+                    style="vertical-align: top; min-width:100px;"
                 >
-                    {!! format_money_pdf($item->tax, $invoice->customer->currency) !!}
+                @foreach($item->taxes as $tax)
+                {{$tax->name}} @ {{$tax->percent}}% <br/>
+                 {!! format_money_pdf($tax->amount, $invoice->customer->currency) !!} <br/>
+                @endforeach
+                   
                 </td>
             @endif
 
             <td
                 class="text-right item-cell"
-                style="vertical-align: top;"
+                style="vertical-align: top; min-width:100px;"
             >
                 {!! format_money_pdf($item->total, $invoice->customer->currency) !!}
             </td>
@@ -122,24 +136,24 @@
         @endif
 
         @if ($invoice->tax_per_item === 'YES')
-            @foreach ($taxes as $tax)
+            @foreach ($taxes as $tax_name => $tax_amount)
                 <tr>
                     <td class="border-0 total-table-attribute-label">
-                        {{$tax->name.' ('.$tax->percent.'%)'}}
+                    {{$tax_name}}
                     </td>
                     <td class="py-2 border-0 item-cell total-table-attribute-value">
-                        {!! format_money_pdf($tax->amount, $invoice->customer->currency) !!}
+                        {!! format_money_pdf($tax_amount, $invoice->customer->currency) !!}
                     </td>
                 </tr>
             @endforeach
         @else
-            @foreach ($invoice->taxes as $tax)
+            @foreach ($invoice->taxes as $tax_name => $tax_amount)
                 <tr>
                     <td class="border-0 total-table-attribute-label">
-                        {{$tax->name.' ('.$tax->percent.'%)'}}
+                        {{$tax_name}}
                     </td>
                     <td class="py-2 border-0 item-cell total-table-attribute-value">
-                        {!! format_money_pdf($tax->amount, $invoice->customer->currency) !!}
+                        {!! format_money_pdf($tax_amount, $invoice->customer->currency) !!}
                     </td>
                 </tr>
             @endforeach
@@ -155,10 +169,40 @@
             </td>
             <td
                 class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
-                style="color: #5851D8"
+                
             >
                 {!! format_money_pdf($invoice->total, $invoice->customer->currency)!!}
             </td>
         </tr>
+        <tr>
+            <td class="border-0 total-border-left total-table-attribute-label">
+                @lang('pdf_roundoff')
+            </td>
+            <td
+                class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
+                
+            >
+                - {!! format_money_pdf($invoice->total % 100, $invoice->customer->currency)!!}
+            </td>
+        </tr>
+        <tr>
+            <td class="border-0 total-border-left total-table-attribute-label">
+                @lang('pdf_total_payable')
+            </td>
+            <td
+                class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
+                
+            >
+                {!! format_money_pdf(round($invoice->total/100)*100, $invoice->customer->currency)!!}
+            </td>
+        </tr>
     </table>
+    
 </div>
+
+<div class="notes" style="text-transform: capitalize;">
+        <p><b>Amount In Words</b></p>
+        <p>{{amountInWords($invoice->total/100)}}</p>
+</div>
+
+

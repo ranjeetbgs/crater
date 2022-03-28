@@ -1,5 +1,6 @@
 <template>
   <div class="md:grid-cols-12 grid-cols-1 md:gap-x-6 mt-6 mb-8 grid gap-y-5">
+    <div class="col-span-12 lg:col-span-5 ">
     <BaseCustomerSelectPopup
       v-model="estimateStore.newEstimate.customer"
       :valid="v.customer_id"
@@ -8,7 +9,12 @@
       class="col-span-5 pr-0"
     />
 
-    <BaseInputGrid class="col-span-7">
+    
+
+    </div>
+    <div class="col-span-12 lg:col-span-7 ">
+
+    <BaseInputGrid class="md:grid-cols-3">
       <BaseInputGroup
         :label="$t('reports.estimates.estimate_date')"
         :content-loading="isLoading"
@@ -50,7 +56,7 @@
         </BaseInput>
       </BaseInputGroup>
 
-      <!-- <BaseInputGroup
+      <BaseInputGroup
         :label="$t('estimates.ref_number')"
         :content-loading="isLoading"
         :error="
@@ -66,7 +72,7 @@
             <BaseIcon name="HashtagIcon" :class="slotProps.class" />
           </template>
         </BaseInput>
-      </BaseInputGroup> -->
+      </BaseInputGroup>
       <ExchangeRateConverter
         :store="estimateStore"
         store-prop="newEstimate"
@@ -76,6 +82,7 @@
         :customer-currency="estimateStore.newEstimate.currency_id"
       />
     </BaseInputGrid>
+    </div>
   </div>
 </template>
 

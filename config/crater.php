@@ -132,7 +132,7 @@ return [
             'link' => '/admin/settings/company-info',
             'icon' => 'OfficeBuildingIcon',
             'owner_only' => false,
-            'ability' => '',
+            'ability' => 'manage-company',
             'model' => ''
         ],
         [
@@ -141,8 +141,8 @@ return [
             'name' => 'Preferences',
             'link' => '/admin/settings/preferences',
             'icon' => 'CogIcon',
-            'owner_only' => true,
-            'ability' => '',
+            'owner_only' => false,
+            'ability' => 'manage-company',
             'model' => ''
         ],
         [
@@ -151,8 +151,8 @@ return [
             'name' => 'Customization',
             'link' => '/admin/settings/customization',
             'icon' => 'PencilAltIcon',
-            'owner_only' => true,
-            'ability' => '',
+            'owner_only' => false,
+            'ability' => 'manage-company',
             'model' => ''
         ],
         [
@@ -181,8 +181,8 @@ return [
             'name' => 'Notifications',
             'link' => '/admin/settings/notifications',
             'icon' => 'BellIcon',
-            'owner_only' => true,
-            'ability' => '',
+            'owner_only' => false,
+            'ability' => 'manage-company',
             'model' => ''
         ],
         [

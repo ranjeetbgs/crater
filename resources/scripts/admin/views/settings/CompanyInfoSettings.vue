@@ -59,7 +59,7 @@
             v-model="companyForm.address.state"
             :options="globalStore.config.states"
             label="name"
-            value-prop="code"
+            value-prop="name"
             :can-deselect="true"
             :can-clear="false"
             searchable

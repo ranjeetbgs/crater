@@ -14,7 +14,7 @@ class InvoiceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $meta = json_decode($this->meta);
+        $meta = $this->meta;
         return [
             'id' => $this->id,
             'invoice_date' => $this->invoice_date,
@@ -25,11 +25,10 @@ class InvoiceResource extends JsonResource
             'reverse_charge' => @$meta->reverse_charge,
             'place_of_supply' => @$meta->place_of_supply,
             'invoice_type' => @$meta->invoice_type,
-            'ref_number' => @$meta->ref_number,
             'tax_format' => @$meta->tax_format,
             'delivery_date' => @$meta->delivery_date,
             'po_number' => @$meta->po_number,
-            'chalan_number' => @$meta->chalan_number,
+            'challan_number' => @$meta->challan_number,
             'e_way_number' => @$meta->e_way_number,
             'gr_number' => @$meta->gr_number,
             'transport_id' => @$meta->transport_id,

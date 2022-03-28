@@ -76,4 +76,5 @@ export default {
   // settings
   MANAGE_NOTE: 'manage-all-notes',
   VIEW_NOTE: 'view-all-notes',
+  MANAGE_COMPANY: 'manage-company'
 }

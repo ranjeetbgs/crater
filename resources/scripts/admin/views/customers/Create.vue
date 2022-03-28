@@ -368,7 +368,7 @@
                 v-model="customerStore.currentCustomer.billing.state"
                 :options="globalStore.config.states"
                 label="name"
-                value-prop="code"
+                value-prop="name"
                 :can-deselect="true"
                 :can-clear="false"
                 searchable
@@ -544,7 +544,7 @@
                 v-model="customerStore.currentCustomer.shipping.state"
                 :options="globalStore.config.states"
                 label="name"
-                value-prop="code"
+                value-prop="name"
                 :can-deselect="true"
                 :can-clear="false"
                 searchable

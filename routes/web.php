@@ -31,6 +31,11 @@ Route::get('/modules/scripts/{script}', ScriptController::class);
 // Admin Auth
 // ----------------------------------------------
 
+Route::get('test',function(){
+    $x = array_search('Bihar', array_column(config('crater.states'), 'name') );
+    dd(config('crater.states')[$x]['code']);
+});
+
 Route::post('login', [LoginController::class, 'login']);
 
 Route::post('auth/logout', function () {

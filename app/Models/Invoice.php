@@ -112,6 +112,11 @@ class Invoice extends Model implements HasMedia
         return $this->belongsTo(User::class, 'creator_id');
     }
 
+    public function getMetaAttribute($value)
+    {
+        return json_decode($value);
+    }
+
     public function getInvoicePdfUrlAttribute()
     {
         return url('/invoices/pdf/'.$this->unique_hash);
@@ -550,7 +555,8 @@ class Invoice extends Model implements HasMedia
                     })->first();
 
                     if ($found) {
-                        $found->amount += $tax->amount;
+                       // $found->amount += $tax->amount;
+                       $taxes->push($tax);
                     } else {
                         $taxes->push($tax);
                     }
@@ -567,6 +573,12 @@ class Invoice extends Model implements HasMedia
         App::setLocale($locale);
 
         $logo = $company->logo_path;
+
+        $taxes = $taxes->groupBy('name')->map(function ($row) {
+            return $row->sum('amount');
+        });
+
+        // dd($this);
 
         view()->share([
             'invoice' => $this,
@@ -656,6 +668,18 @@ class Invoice extends Model implements HasMedia
 
     public static function invoiceTemplates()
     {
+        return [
+                [
+                    "name"=> "lite",
+                    "path"=> vite_asset('img/PDF/lite.png')
+                ],
+                [
+                    "name"=> "primary",
+                    "path"=> vite_asset('img/PDF/primary.png')
+                ]
+
+            ];
+
         $templates = Storage::disk('views')->files('/app/pdf/invoice');
         $invoiceTemplates = [];
 
