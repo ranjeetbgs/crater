@@ -327,11 +327,11 @@
         <table width="100%">
             <tr>
                 <td width="30%" class="header-section-left">
-                <div class="attribute-label">GSTIN: 237498374283</div>
+                <div class="attribute-label">GSTIN: {{$invoice->company->gst}}</div>
                 </td>
-                <td width="40%"><h4 style="text-align:center;">Tax Invoice</h4></td>
+                <td width="40%"><h4 style="text-align:center;">{{@$invoice->meta->invoice_type}}</h4></td>
                 <td width="30%" class="text-right company-address-container company-address">
-                <div class="attribute-label text-right">ORIGINAL FOR RECIPIENT</div>
+                <div class="attribute-label text-right">Original / Duplicate / Triplicate</div>
                 </td>
             </tr>
         </table>
@@ -440,7 +440,7 @@
 
         
     </div>
-    <div class="invoice-details-container attribute-label" style="margin-right:50px;">
+    <div class="invoice-details-container attribute-label" style="margin-right:50px;margin-top:100px;">
 
     <p>For {{$invoice->company->name}}</p>
         <br><br>

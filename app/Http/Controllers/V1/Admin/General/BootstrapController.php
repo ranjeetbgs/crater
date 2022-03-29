@@ -69,10 +69,10 @@ class BootstrapController extends Controller
             ];
             
         $current_company_settings['invoice_types'] = [
-                ['code'=>'tax_invoice', 'label'=>'Tax Invoice'],
-                ['code'=>'bill_of_supply', 'label'=>'Bill Of Supply'],
-                ['code'=>'sez_with_tax', 'label'=>'SEZ with Tax'],
-                ['code'=>'sez_without_tax', 'label'=>'SEZ without Tax'],
+                ['code'=>'Tax Invoice', 'label'=>'Tax Invoice'],
+                ['code'=>'Bill Of Supply', 'label'=>'Bill Of Supply'],
+                ['code'=>'SEZ with Tax', 'label'=>'SEZ with Tax'],
+                ['code'=>'SEZ without Tax', 'label'=>'SEZ without Tax'],
             ];
             
 
