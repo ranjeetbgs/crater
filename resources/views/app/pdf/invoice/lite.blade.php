@@ -373,6 +373,7 @@
 
             <div class="invoice-details-container">
                 <table>
+                    
                     <tr>
                         <td class="attribute-label">@lang('pdf_invoice_number')</td>
                         <td class="attribute-value"> &nbsp;{{$invoice->invoice_number}}</td>
@@ -385,18 +386,25 @@
                         <td class="attribute-label">@lang('pdf_invoice_due_date')</td>
                         <td class="attribute-value"> &nbsp;{{$invoice->formattedDueDate}}</td>
                     </tr>
+                    @if(@$invoice->meta->challan_number)
                     <tr>
                         <td class="attribute-label">Challan No</td>
                         <td class="attribute-value"> &nbsp;{{@$invoice->meta->challan_number}}</td>
                     </tr>
+                    @endif
+
+                    @if(@$invoice->meta->delivery_date)
                     <tr>
                         <td class="attribute-label">Delivery Date</td> 
                         <td class="attribute-value"> &nbsp;{{formatDate( $invoice->company->id, @$invoice->meta->delivery_date)}}</td>
                     </tr>
+                    @endif
+                    @if(@$invoice->meta->po_number)
                     <tr>
                         <td class="attribute-label">P.O No</td>
                         <td class="attribute-value"> &nbsp;{{@$invoice->meta->po_number}}</td>
                     </tr>
+                    @endif
 
                     
                     @if(hasTransportOption($invoice->company->id))

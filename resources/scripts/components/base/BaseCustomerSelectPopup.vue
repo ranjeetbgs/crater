@@ -69,7 +69,7 @@
       </div>
       <div class="grid grid-cols-2 gap-2 text-sm ">
         <div v-if="selectedCustomer.billing" class="flex flex-col">
-          <p class="flex flex-col">GSTIN: GST123456</p> 
+          
           <label
             class="
               mb-1
