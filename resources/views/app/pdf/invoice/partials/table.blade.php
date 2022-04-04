@@ -196,13 +196,26 @@
                 {!! format_money_pdf(round($invoice->total/100)*100, $invoice->customer->currency)!!}
             </td>
         </tr>
+
+        <tr>
+            <td colspan="2"><div class="invoice-details-container attribute-label" style="margin-right:50px;margin-top:10px;">
+
+<p>For {{$invoice->company->name}}</p>
+    <br><br>
+
+<p>Authorised Signatory</p>
+
+</div> </td>
+        </tr>
     </table>
+
+    
     
 </div>
 
 <div class="notes" style="text-transform: capitalize;">
         <p><b>Amount In Words</b></p>
-        <p>{{amountInWords($invoice->total/100)}}</p>
+        <p>{{amountInWords( round($invoice->total/100)*100 )}}</p>
 </div>
 
 

@@ -19,7 +19,7 @@
       <div class="px-6 pb-3">
         <BaseTabGroup>
           <BaseTab :title="$t('customers.basic_info')" class="!mt-2">
-            <BaseInputGrid layout="one-column">
+            <BaseInputGrid >
               <BaseInputGroup
                 :label="$t('customers.display_name')"
                 required
@@ -34,6 +34,61 @@
                   @input="v$.name.$touch()"
                 />
               </BaseInputGroup>
+
+              <BaseInputGroup :label="$t('customers.primary_contact_name')">
+                <BaseInput
+                  v-model="customerStore.currentCustomer.contact_name"
+                  type="text"
+                  class="mt-1 md:mt-0"
+                />
+              </BaseInputGroup>
+
+              <BaseInputGroup
+                :label="$t('login.email')"
+                :error="v$.email.$error && v$.email.$errors[0].$message"
+              >
+                <BaseInput
+                  v-model.trim="customerStore.currentCustomer.email"
+                  type="text"
+                  name="email"
+                  class="mt-1 md:mt-0"
+                  :invalid="v$.email.$error"
+                  @input="v$.email.$touch()"
+                />
+              </BaseInputGroup>
+
+              <BaseInputGroup :label="$t('customers.phone')">
+                  <BaseInput
+                    v-model.trim="customerStore.currentCustomer.phone"
+                    type="text"
+                    name="phone"
+                    class="mt-1 md:mt-0"
+                  />
+                </BaseInputGroup>
+
+                <BaseInputGroup
+              :label="$t('customers.gst')"
+              :content-loading="isFetchingInitialData"
+            >
+              <BaseInput
+                v-model.trim="customerStore.currentCustomer.gst"
+                :content-loading="isFetchingInitialData"
+                type="text"
+                name="gst"
+              />
+            </BaseInputGroup>
+
+            <BaseInputGroup
+              :label="$t('customers.pan')"
+              :content-loading="isFetchingInitialData"
+            >
+              <BaseInput
+                v-model.trim="customerStore.currentCustomer.pan"
+                :content-loading="isFetchingInitialData"
+                type="text"
+                name="pan"
+              />
+            </BaseInputGroup>
 
               <BaseInputGroup
                 :label="$tc('settings.currencies.currency')"
@@ -56,26 +111,22 @@
                 />
               </BaseInputGroup>
 
-              <BaseInputGroup :label="$t('customers.primary_contact_name')">
-                <BaseInput
-                  v-model="customerStore.currentCustomer.contact_name"
-                  type="text"
-                  class="mt-1 md:mt-0"
-                />
-              </BaseInputGroup>
-              <BaseInputGroup
-                :label="$t('login.email')"
-                :error="v$.email.$error && v$.email.$errors[0].$message"
-              >
-                <BaseInput
-                  v-model.trim="customerStore.currentCustomer.email"
-                  type="text"
-                  name="email"
-                  class="mt-1 md:mt-0"
-                  :invalid="v$.email.$error"
-                  @input="v$.email.$touch()"
-                />
-              </BaseInputGroup>
+
+                <BaseInputGroup
+                  :label="$t('customers.website')"
+                  :error="v$.website.$error && v$.website.$errors[0].$message"
+                >
+                  <BaseInput
+                    v-model="customerStore.currentCustomer.website"
+                    type="url"
+                    class="mt-1 md:mt-0"
+                    :invalid="v$.website.$error"
+                    @input="v$.website.$touch()"
+                  />
+                </BaseInputGroup>
+
+              
+              
 
               <BaseInputGroup
                 :label="$t('customers.prefix')"
@@ -93,29 +144,11 @@
                 />
               </BaseInputGroup>
 
-              <BaseInputGrid>
-                <BaseInputGroup :label="$t('customers.phone')">
-                  <BaseInput
-                    v-model.trim="customerStore.currentCustomer.phone"
-                    type="text"
-                    name="phone"
-                    class="mt-1 md:mt-0"
-                  />
-                </BaseInputGroup>
+          
+                
 
-                <BaseInputGroup
-                  :label="$t('customers.website')"
-                  :error="v$.website.$error && v$.website.$errors[0].$message"
-                >
-                  <BaseInput
-                    v-model="customerStore.currentCustomer.website"
-                    type="url"
-                    class="mt-1 md:mt-0"
-                    :invalid="v$.website.$error"
-                    @input="v$.website.$touch()"
-                  />
-                </BaseInputGroup>
-              </BaseInputGrid>
+              
+              
             </BaseInputGrid>
           </BaseTab>
 
@@ -141,6 +174,22 @@
               >
                 <CopyInputField :token="getCustomerPortalUrl" />
               </BaseInputGroup>
+
+              <BaseInputGroup
+              v-if="customerStore.currentCustomer.enable_portal"
+                :label="$t('login.email')"
+                :error="v$.email.$error && v$.email.$errors[0].$message"
+              >
+                <BaseInput
+                  v-model.trim="customerStore.currentCustomer.email"
+                  type="text"
+                  name="email"
+                  class="mt-1 md:mt-0"
+                  :invalid="v$.email.$error"
+                  @input="v$.email.$touch()"
+                />
+              </BaseInputGroup>
+              <BaseInputGroup/>
 
               <BaseInputGroup
                 v-if="customerStore.currentCustomer.enable_portal"
@@ -207,7 +256,7 @@
           </BaseTab>
 
           <BaseTab :title="$t('customers.billing_address')" class="!mt-2">
-            <BaseInputGrid layout="one-column">
+            <BaseInputGrid >
               <BaseInputGroup :label="$t('customers.name')">
                 <BaseInput
                   v-model="customerStore.currentCustomer.billing.name"
@@ -231,7 +280,9 @@
                 />
               </BaseInputGroup>
 
-              <BaseInputGroup :label="$t('customers.state')">
+              <BaseInputGroup :label="$t('customers.state')"
+              v-if="customerStore.currentCustomer.billing.country_id != 101"
+              >
                 <BaseInput
                   v-model="customerStore.currentCustomer.billing.state"
                   type="text"
@@ -239,6 +290,24 @@
                   class="mt-1 md:mt-0"
                 />
               </BaseInputGroup>
+
+              <BaseInputGroup 
+            v-if="customerStore.currentCustomer.billing.country_id == 101"
+            :label="$tc('customers.state')"
+            :content-loading="isFetchingInitialData"
+            >
+              <BaseMultiselect
+                v-model="customerStore.currentCustomer.billing.state"
+                :options="globalStore.config.states"
+                label="name"
+                value-prop="name"
+                :can-deselect="true"
+                :can-clear="false"
+                searchable
+                track-by="name"
+                open-direction="right"
+              />
+            </BaseInputGroup>
 
               <BaseInputGroup :label="$t('customers.city')">
                 <BaseInput
@@ -268,10 +337,9 @@
                   @input="v$.billing.address_street_1.$touch()"
                 />
               </BaseInputGroup>
-            </BaseInputGrid>
 
-            <BaseInputGrid layout="one-column">
               <BaseInputGroup
+              :label="' &nbsp;'"
                 :error="
                   v$.billing.address_street_2.$error &&
                   v$.billing.address_street_2.$errors[0].$message
@@ -289,7 +357,9 @@
                 />
               </BaseInputGroup>
 
-              <BaseInputGroup :label="$t('customers.phone')">
+            
+
+            <BaseInputGroup :label="$t('customers.phone')">
                 <BaseInput
                   v-model.trim="customerStore.currentCustomer.billing.phone"
                   type="text"
@@ -305,7 +375,7 @@
                   class="mt-1 md:mt-0"
                 />
               </BaseInputGroup>
-            </BaseInputGrid>
+              </BaseInputGrid>
           </BaseTab>
 
           <BaseTab :title="$t('customers.shipping_address')" class="!mt-2">
@@ -322,7 +392,7 @@
               </div>
             </div>
 
-            <BaseInputGrid layout="one-column">
+            <BaseInputGrid >
               <BaseInputGroup :label="$t('customers.name')">
                 <BaseInput
                   v-model="customerStore.currentCustomer.shipping.name"
@@ -346,7 +416,9 @@
                 />
               </BaseInputGroup>
 
-              <BaseInputGroup :label="$t('customers.state')">
+              <BaseInputGroup :label="$t('customers.state')"
+              v-if="customerStore.currentCustomer.shipping.country_id != 101"
+              >
                 <BaseInput
                   v-model="customerStore.currentCustomer.shipping.state"
                   type="text"
@@ -354,6 +426,24 @@
                   class="mt-1 md:mt-0"
                 />
               </BaseInputGroup>
+
+              <BaseInputGroup 
+            v-if="customerStore.currentCustomer.shipping.country_id == 101"
+            :label="$tc('customers.state')"
+            :content-loading="isFetchingInitialData"
+            >
+              <BaseMultiselect
+                v-model="customerStore.currentCustomer.shipping.state"
+                :options="globalStore.config.states"
+                label="name"
+                value-prop="name"
+                :can-deselect="true"
+                :can-clear="false"
+                searchable
+                track-by="name"
+                open-direction="right"
+              />
+            </BaseInputGroup>
 
               <BaseInputGroup :label="$t('customers.city')">
                 <BaseInput
@@ -383,10 +473,9 @@
                   @input="v$.shipping.address_street_1.$touch()"
                 />
               </BaseInputGroup>
-            </BaseInputGrid>
-
-            <BaseInputGrid layout="one-column">
+            
               <BaseInputGroup
+              :label="' &nbsp;'"
                 :error="
                   v$.shipping.address_street_2.$error &&
                   v$.shipping.address_street_2.$errors[0].$message

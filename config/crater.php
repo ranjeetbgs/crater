@@ -509,11 +509,15 @@ return [
     * List of indian states
     */
     'states'=>[
-        ['code'=>'12', 'name' => 'Arunachal Pradesh'],
+        ['code'=>'35', 'name' => 'Andaman and Nicobar Islands'],    
         ['code'=>'37', 'name' => 'Andhra Pradesh'],
+        ['code'=>'12', 'name' => 'Arunachal Pradesh'],
         ['code'=>'18', 'name' => 'Assam'],
         ['code'=>'10', 'name' => 'Bihar'],
+        ['code'=>'04', 'name' => 'Chandigarh'],
         ['code'=>'22', 'name' => 'Chhattisgarh'],
+        ['code'=>'26', 'name' => 'Dadra and Nagar Haveli and Daman and Diu'],
+        ['code'=>'07', 'name' => 'Delhi'],
         ['code'=>'30', 'name' => 'Goa'],
         ['code'=>'24', 'name' => 'Gujarat'],
         ['code'=>'06', 'name' => 'Haryana'],
@@ -522,6 +526,8 @@ return [
         ['code'=>'20', 'name' => 'Jharkhand'],
         ['code'=>'29', 'name' => 'Karnataka'],
         ['code'=>'32', 'name' => 'Kerala'],
+        ['code'=>'38', 'name' => 'Ladakh'],
+        ['code'=>'31', 'name' => 'Lakshadweep'],
         ['code'=>'23', 'name' => 'Madhya Pradesh'],
         ['code'=>'27', 'name' => 'Maharashtra'],
         ['code'=>'14', 'name' => 'Manipur'],
@@ -529,6 +535,7 @@ return [
         ['code'=>'15', 'name' => 'Mizoram'],
         ['code'=>'13', 'name' => 'Nagaland'],
         ['code'=>'21', 'name' => 'Odisha'],
+        ['code'=>'34', 'name' => 'Puducherry'],
         ['code'=>'03', 'name' => 'Punjab'],
         ['code'=>'08', 'name' => 'Rajasthan'],
         ['code'=>'11', 'name' => 'Sikkim'],
@@ -537,14 +544,8 @@ return [
         ['code'=>'16', 'name' => 'Tripura'],
         ['code'=>'09', 'name' => 'Uttar Pradesh'],
         ['code'=>'05', 'name' => 'Uttarakhand'],
-        ['code'=>'19', 'name' => 'West Bengal'],
-        ['code'=>'35', 'name' => 'Andaman and Nicobar Islands'],
-        ['code'=>'04', 'name' => 'Chandigarh'],
-        ['code'=>'26', 'name' => 'Dadra and Nagar Haveli'],
-        ['code'=>'25', 'name' => 'Daman and Diu'],
-        ['code'=>'31', 'name' => 'Lakshadweep'],
-        ['code'=>'07', 'name' => 'NCT of Delhi'],
-        ['code'=>'34', 'name' => 'Puducherry']
+        ['code'=>'19', 'name' => 'West Bengal']
+
  ]
 
 ];

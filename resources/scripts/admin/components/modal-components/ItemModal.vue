@@ -13,7 +13,7 @@
     <div class="item-modal">
       <form action="" @submit.prevent="submitItemData">
         <div class="px-8 py-8 sm:p-6">
-          <BaseInputGrid layout="one-column">
+          <BaseInputGrid >
             <BaseInputGroup
               :label="$t('items.name')"
               required
@@ -26,6 +26,22 @@
                 @input="v$.name.$touch()"
               />
             </BaseInputGroup>
+
+            <BaseInputGroup
+            :label="$t('items.hsn_sac')"
+            :error="
+              v$.hsn_sac.$error &&
+              v$.hsn_sac.$errors[0].$message
+            "
+           
+          >
+            <BaseInput
+              v-model="itemStore.currentItem.hsn_sac"
+              type="text"
+              :invalid="v$.hsn_sac.$error"
+              @input="v$.hsn_sac.$touch()"
+            />
+          </BaseInputGroup>
 
             <BaseInputGroup :label="$t('items.price')">
               <BaseMoney
@@ -127,6 +143,7 @@ import {
   maxLength,
   minValue,
   helpers,
+  numeric,
   alpha,
 } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core'
@@ -192,6 +209,15 @@ const rules = {
       minLength(3)
     ),
   },
+
+  hsn_sac: {
+        maxLength: helpers.withMessage(
+          t('validation.invalid_hsn', { count: 8 }),
+          maxLength(8)
+        ),
+        numeric: helpers.withMessage(t('validation.numbers_only'), numeric),
+        
+      },
 
   description: {
     maxLength: helpers.withMessage(

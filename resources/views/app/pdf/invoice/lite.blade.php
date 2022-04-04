@@ -304,7 +304,7 @@
 </head>
 
 <body>
-    <div class="header-container">
+    <div class="header-container" >
         <table width="100%">
             <tr>
                 <td width="50%" class="header-section-left">
@@ -327,7 +327,9 @@
         <table width="100%">
             <tr>
                 <td width="30%" class="header-section-left">
+                @if(@$invoice->company->gst)
                 <div class="attribute-label">GSTIN: {{$invoice->company->gst}}</div>
+                @endif
                 </td>
                 <td width="40%"><h4 style="text-align:center;">{{@$invoice->meta->invoice_type}}</h4></td>
                 <td width="30%" class="text-right company-address-container company-address">
@@ -352,9 +354,13 @@
                     @if($billing_address)
                         <b>@lang('pdf_bill_to')</b> <br>
                         {!! $billing_address !!}
-                        
-                        <p>GSTIN: {{$invoice->customer->gst}}<br>
+                        @if(@$invoice->customer->gst)
+                        <p>GSTIN: {{$invoice->customer->gst}}
+                        @endif
+                        @if(@$invoice->customer->pan)
+                        <br>
                         PAN: {{$invoice->customer->pan}}<br>
+                        @endif
                         Place of supply: {{$invoice->customer->billingAddress->state}} ({{getStateCode($invoice->customer->billingAddress->state)}})
                     </p>
                     @endif
@@ -438,9 +444,9 @@
 
         <div class="notes">
             @if($notes)
-                <div class="notes-label">
+                <p><b>
                     @lang('pdf_notes')
-                </div>
+    </b></p>
 
                 {!! $notes !!}
             @endif
@@ -448,14 +454,7 @@
 
         
     </div>
-    <div class="invoice-details-container attribute-label" style="margin-right:50px;margin-top:100px;">
-
-    <p>For {{$invoice->company->name}}</p>
-        <br><br>
     
-    <p>Authorised Signatory</p>
-
-    </div>
 </body>
 
 </html>

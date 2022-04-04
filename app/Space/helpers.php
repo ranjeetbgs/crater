@@ -245,5 +245,5 @@ function amountInWords(float $number)
     }
     $rupees = implode('', array_reverse($str));
     $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
-    return ($rupees ? $rupees . 'Rupees ' : ''); // . $paise;
+    return ($rupees ? 'Rupees '.$rupees . ' Only' : ''); // . $paise;
 }
