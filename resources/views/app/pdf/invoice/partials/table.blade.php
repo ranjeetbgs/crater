@@ -182,7 +182,7 @@
                 class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
                 
             >
-                - {!! format_money_pdf($invoice->total % 100, $invoice->customer->currency)!!}
+                 {!!format_money_pdf( round($invoice->total/100.00)*100 - $invoice->total) !!}
             </td>
         </tr>
         <tr>
@@ -193,6 +193,7 @@
                 class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
                 
             >
+            
                 {!! format_money_pdf(round($invoice->total/100)*100, $invoice->customer->currency)!!}
             </td>
         </tr>
@@ -215,7 +216,7 @@
 
 <div class="notes" style="text-transform: capitalize;">
         <p><b>Amount In Words</b></p>
-        <p>{{amountInWords( round($invoice->total/100)*100 )}}</p>
+        <p>{{amountInWords( round($invoice->total/100.00) )}}</p>
 </div>
 
 
