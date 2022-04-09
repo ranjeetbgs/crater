@@ -43,7 +43,7 @@
         }
 
         .company-address-container {
-            width: 50%;
+            width: 34%;
             margin-bottom: 2px;
             padding-right: 60px;
         }
@@ -51,7 +51,7 @@
         .company-address {
             margin-top: 12px;
             font-size: 12px;
-            line-height: 15px;
+            line-height: 12px;
             color: #333;
             word-wrap: break-word;
         }
@@ -60,14 +60,14 @@
 
         .content-wrapper {
             display: block;
+            margin-top:-15px;
             padding-top: 0px;
-            padding-bottom: 20px;
         }
 
         .customer-address-container {
             display: block;
             float: left;
-            width: 45%;
+            width: 60%;
             padding: 10px 0 0 30px;
         }
 
@@ -85,10 +85,10 @@
 
         .shipping-address {
             font-size: 10px;
-            line-height: 15px;
+            line-height: 12px;
             color: #333;
             margin-top: 5px;
-            width: 160px;
+            width: 230px;
             word-wrap: break-word;
         }
 
@@ -101,10 +101,10 @@
 
         .billing-address {
             font-size: 10px;
-            line-height: 15px;
+            line-height: 12px;
             color: #333;
             margin-top: 5px;
-            width: 160px;
+            width: 230px;
             word-wrap: break-word;
         }
 
@@ -118,21 +118,21 @@
 
         .attribute-label {
             font-size: 12px;
-            line-height: 18px;
+            line-height: 15px;
             text-align: left;
             color: #333;
         }
 
         .attribute-value {
             font-size: 12px;
-            line-height: 18px;
+            line-height: 15px;
             text-align: right;
         }
 
         /* -- Items Table -- */
 
         .items-table {
-            margin-top: 35px;
+            margin-top: 15px;
             padding: 0px 30px 10px 30px;
             page-break-before: avoid;
             page-break-after: auto;
@@ -153,12 +153,12 @@
         tr.item-table-heading-row th {
             border-bottom: 0.620315px solid #E8E8E8;
             font-size: 10px;
-            line-height: 18px;
+            line-height: 12px;
         }
 
         tr.item-row td {
             font-size: 10px;
-            line-height: 18px;
+            line-height: 12px;
         }
 
         .item-cell {
@@ -172,7 +172,7 @@
         .item-description {
             color: #333;
             font-size: 8px;
-            line-height: 12px;
+            line-height: 10px;
         }
 
         .item-cell-table-hr {
@@ -208,8 +208,6 @@
             text-align: right;
             font-size: 12px;
             padding-right: 10px;
-            padding-top: 2px;
-            padding-bottom: 2px;
         }
 
         .total-border-left {
@@ -355,14 +353,14 @@
                         <b>@lang('pdf_bill_to')</b> <br>
                         {!! $billing_address !!}
                         @if(@$invoice->customer->gst)
-                        <p>GSTIN: {{$invoice->customer->gst}}
+                        GSTIN: {{$invoice->customer->gst}}
                         @endif
                         @if(@$invoice->customer->pan)
                         <br>
                         PAN: {{$invoice->customer->pan}}<br>
                         @endif
                         Place of supply: {{$invoice->customer->billingAddress->state}} ({{getStateCode($invoice->customer->billingAddress->state)}})
-                    </p>
+                    
                     @endif
                 </div>
 
@@ -370,8 +368,8 @@
                     @if($shipping_address)
                         <b>@lang('pdf_ship_to')</b> <br>
                         {!! $shipping_address !!}
-                        <p>Place of supply: {{$invoice->customer->billingAddress->state}} ({{getStateCode($invoice->customer->billingAddress->state)}})
-                    </p>
+                        Place of supply: {{$invoice->customer->billingAddress->state}} ({{getStateCode($invoice->customer->billingAddress->state)}})
+                    
                     @endif
                 </div>
                 <div style="clear: both;"></div>
