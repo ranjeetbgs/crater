@@ -19,10 +19,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'email' => 'admin@craterapp.com',
-            'name' => 'Jane Doe',
+            'email' => 'ranjitbeg2009@gmail.com',
+            'name' => 'Admin',
             'role' => 'super admin',
-            'password' => 'crater@123',
+            'password' => 'ranjeet@123',
         ]);
 
         $company = Company::create([
@@ -39,6 +39,6 @@ class UsersTableSeeder extends Seeder
 
         $user->assign('super admin');
 
-        Setting::setSetting('profile_complete', 0);
+        Setting::setSetting('profile_complete', 'COMPLETED');
     }
 }

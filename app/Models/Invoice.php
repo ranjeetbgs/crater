@@ -670,12 +670,12 @@ class Invoice extends Model implements HasMedia
     {
         return [
                 [
-                    "name"=> "lite",
-                    "path"=> vite_asset('img/PDF/lite.png')
+                    "name"=> "modern",
+                    "path"=> vite_asset('img/PDF/modern.png')
                 ],
                 [
-                    "name"=> "primary",
-                    "path"=> vite_asset('img/PDF/primary.png')
+                    "name"=> "classic",
+                    "path"=> vite_asset('img/PDF/classic.png')
                 ]
 
             ];

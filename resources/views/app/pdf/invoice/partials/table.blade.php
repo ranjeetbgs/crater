@@ -1,7 +1,7 @@
 <table width="100%" class="items-table" cellspacing="0" border="0">
     <tr class="item-table-heading-row">
-        <th width="2%" class="pr-20 text-right item-table-heading">#</th>
-        <th width="25%" class="pl-0 text-left item-table-heading">@lang('pdf_items_label')</th>
+        <th width="2%" class=" text-right item-table-heading">#</th>
+        <th width="25%" class=" text-left item-table-heading">@lang('pdf_items_label')</th>
         @foreach($customFields as $field)
             <th class="text-right item-table-heading">{{ $field->label }}</th>
         @endforeach
@@ -22,13 +22,13 @@
     @foreach ($invoice->items as $item)
         <tr class="item-row">
             <td
-                class="pr-20 text-right item-cell"
+                class=" text-right item-cell"
                 style="vertical-align: top;"
             >
                 {{$index}}
             </td>
             <td
-                class="pl-0 text-left item-cell"
+                class=" text-left item-cell"
                 style="vertical-align: top;"
             >
                 <span>{{ $item->name }}</span><br>
@@ -139,7 +139,7 @@
             @foreach ($taxes as $tax_name => $tax_amount)
                 <tr>
                     <td class="border-0 total-table-attribute-label">
-                    {{$tax_name}}
+                    {{$tax_name}} 
                     </td>
                     <td class="py-2 border-0 item-cell total-table-attribute-value">
                         {!! format_money_pdf($tax_amount, $invoice->customer->currency) !!}
@@ -149,7 +149,7 @@
         @else
             @foreach ($invoice->taxes as $tax_name => $tax_amount)
                 <tr>
-                    <td class="border-0 total-table-attribute-label">
+                    <td class="py-2 border-0 total-table-attribute-label">
                         {{$tax_name}}
                     </td>
                     <td class="py-2 border-0 item-cell total-table-attribute-value">
@@ -159,38 +159,35 @@
             @endforeach
         @endif
 
+       
         <tr>
-            <td class="py-3"></td>
-            <td class="py-3"></td>
-        </tr>
-        <tr>
-            <td class="border-0 total-border-left total-table-attribute-label">
+            <td class="py-2 border-0 total-table-attribute-label">
                 @lang('pdf_total')
             </td>
             <td
-                class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
+                class="py-2 border-0 item-cell total-table-attribute-value"
                 
             >
                 {!! format_money_pdf($invoice->total, $invoice->customer->currency)!!}
             </td>
         </tr>
         <tr>
-            <td class="border-0 total-border-left total-table-attribute-label">
+            <td class="py-2 border-0 total-table-attribute-label">
                 @lang('pdf_roundoff')
             </td>
             <td
-                class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
+                class="py-2 border-0 item-cell total-table-attribute-value"
                 
             >
                  {!!format_money_pdf( round($invoice->total/100.00)*100 - $invoice->total) !!}
             </td>
         </tr>
         <tr>
-            <td class="border-0 total-border-left total-table-attribute-label">
+            <td class="py-2 border-0 total-table-attribute-label">
                 @lang('pdf_total_payable')
             </td>
             <td
-                class="py-8 border-0 total-border-right item-cell total-table-attribute-value"
+                class="py-2 border-0 item-cell total-table-attribute-value"
                 
             >
             
@@ -201,12 +198,13 @@
         <tr>
             <td colspan="2"><div class="invoice-details-container attribute-label" style="margin-right:50px;margin-top:10px;">
 
-<p>For {{$invoice->company->name}}</p>
-    <br><br>
+                <p>For {{$invoice->company->name}}</p>
+                    <br><br>
 
-<p>Authorised Signatory</p>
+                <p>Authorised Signatory</p>
 
-</div> </td>
+                </div> 
+            </td>
         </tr>
     </table>
 
