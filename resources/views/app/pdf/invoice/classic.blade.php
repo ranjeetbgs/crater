@@ -199,7 +199,7 @@
          
       
      
-      <table class="table2" style="border-bottom:none;">
+      <table class="table2" style="border-bottom:none; width:100%;">
          <tr >
             <th id="t2" style="text-align: left; width:35%;  ">
             @if(@$invoice->company->gst)
@@ -212,14 +212,11 @@
             <th id="t2">Original / Duplicate / Triplicate</th>
          </tr>
          <tr>
-            <td id="t2" ><b>Details of Buyer</b> </td>
-            <td id="t2"><b>Details of Consignee</b> </td>
-            <td id="t2" rowspan="2" valign="top">
-            @include('app.pdf.invoice.partials.invoice-details')
-            </td>
-         </tr>
-         <tr>
-            <td id="t2">
+            @if($shipping_address)
+            <td id="t2"> 
+            @else
+            <td id="t2" colspan="2">
+            @endif
             <div class="billing-address-container billing-address">
                     @if($billing_address)
                         <b>@lang('pdf_bill_to')</b> <br>
@@ -237,15 +234,20 @@
                 </div>
               
             </td>
+            @if($shipping_address)
             <td id="t2" valign="top">
             <div @if($billing_address !== '</br>') class="shipping-address-container shipping-address" @else class="shipping-address-container--left shipping-address" @endif>
-                    @if($shipping_address)
+                    
                         <b>@lang('pdf_ship_to')</b> <br>
                         {!! $shipping_address !!}
                         Place of supply: {{$invoice->customer->billingAddress->state}} ({{getStateCode($invoice->customer->billingAddress->state)}})
                     
-                    @endif
+                    
                 </div>
+            </td>
+            @endif
+            <td id="t2"  valign="top">
+            @include('app.pdf.invoice.partials.invoice-details')
             </td>
          </tr>
          <tr>
