@@ -78,6 +78,8 @@ class CloneInvoiceController extends Controller
             'currency_id' => $invoice->currency_id,
             'sales_tax_type' => $invoice->sales_tax_type,
             'sales_tax_address_type' => $invoice->sales_tax_address_type,
+            'meta' => json_encode($invoice->meta),
+            'overdue' => $invoice->overdue
         ]);
 
         $newInvoice->unique_hash = Hashids::connection(Invoice::class)->encode($newInvoice->id);
