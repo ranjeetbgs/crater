@@ -161,8 +161,8 @@
           <tr v-if="store[storeProp].tax_per_item === 'YES'">
             <td class="px-5 py-4 text-left align-top" />
               
-              <td colspan="2" class="px-5 py-4 text-left align-top" />
-            <td colspan="3" class="px-5 py-4 text-left align-top">
+              <td :colspan=" store[storeProp].discount_per_item === 'YES' ? 2 : 1" class="px-5 py-4 text-left align-top" />
+            <td :colspan=" store[storeProp].discount_per_item === 'YES' ? 3 : 4" class="px-5 py-4 text-left align-top">
               <BaseContentPlaceholders v-if="loading">
                 <BaseContentPlaceholdersText
                   :lines="1"
