@@ -6,7 +6,7 @@
     </label>
     <BaseButton
       type="button"
-      class="flex justify-center w-full text-sm lg:w-auto hover:bg-gray-200"
+      class="flex justify-center w-full text-sm lg:w-auto hover:bg-gray-200 capitalize"
       variant="gray"
       @click="openTemplateModal"
     >
