@@ -325,20 +325,6 @@
         .pl-0 {
             padding-left: 0;
         }
-        #watermark {
-            opacity: .05;
-                position: fixed;
-                bottom:   0px;
-                left:     0px;
-                /** The width and height may change 
-                    according to the dimensions of your letterhead
-                **/
-                width:    44cm;
-                height:   22cm;
-
-                /** Your watermark should be behind every content**/
-                z-index:  -1000;
-            }
     </style>
 
     @if (App::isLocale('th'))
@@ -362,6 +348,8 @@
             </tr>
         </table>
         <hr class="header-bottom-divider" style="border: 0.620315px solid #E8E8E8;" />
+        <h4 style="text-align:center;">{{$invoice->getCustomFieldValueBySlug('CUSTOM_INVOICE_TYPE')}}</h4>
+        
     </div>
 
 
@@ -421,6 +409,8 @@
             @endif
         </div>
     </div>
+
+    @include('app.pdf.invoice.partials.footer')
 </body>
 
 </html>

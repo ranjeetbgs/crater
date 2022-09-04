@@ -398,15 +398,18 @@
                 </td>
 
                 <td width="40%" class="header-section-right invoice-details-container">
-                    <h1>@lang('pdf_invoice_label')</h1>
+                    <h1>{{$invoice->getCustomFieldValueBySlug('CUSTOM_INVOICE_TYPE')}}</h1>
                     <h4>{{ $invoice->invoice_number }}</h4>
                     <h4>{{ $invoice->formattedInvoiceDate }}</h4>
+                    
+    
                 </td>
             </tr>
         </table>
     </div>
 
     <hr>
+
 
     <div class="content-wrapper">
         <div class="address-container">
@@ -446,6 +449,8 @@
             @endif
         </div>
     </div>
+
+    @include('app.pdf.invoice.partials.footer')
 </body>
 
 </html>

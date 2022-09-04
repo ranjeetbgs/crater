@@ -6,324 +6,318 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <style type="text/css">
-        /* -- Base -- */
+    /* -- Base -- */
 
-        body {
-            font-family: "DejaVu Sans";
-        }
+    body {
+        font-family: "DejaVu Sans";
+    }
 
-        html {
-            margin: 0px;
-            padding: 0px;
-            margin-top: 50px;
-        }
+    html {
+        margin: 0px;
+        padding: 0px;
+        margin-top: 50px;
+    }
 
-        table {
-            border-collapse: collapse;
-        }
+    table {
+        border-collapse: collapse;
+    }
 
-        hr {
-            color: rgba(0, 0, 0, 0.2);
-            border: 0.5px solid #EAF1FB;
-        }
+    hr {
+        color: rgba(0, 0, 0, 0.2);
+        border: 0.5px solid #EAF1FB;
+    }
 
-        /* -- Header -- */
+    /* -- Header -- */
 
-        .header-container {
-            margin-top: -30px;
-            width: 100%;
-            padding: 0px 30px;
-        }
+    .header-bottom-divider {
+        color: rgba(0, 0, 0, 0.7);
+        top: 90px;
+        left: 0px;
+        width: 100%;
+        margin-left: 0%;
+    }
 
-        .header-logo {
+    .header-container {
+        margin-top: -30px;
+        width: 100%;
+        padding: 0px 30px;
+    }
 
-            text-transform: capitalize;
-            color: #817AE3;
-            padding-top: 0px;
-        }
+    .header-logo {
 
-        .company-address-container {
-            width: 50%;
-            margin-bottom: 2px;
-            padding-right: 60px;
-        }
+        text-transform: capitalize;
+        color: #817AE3;
+        padding-top: 0px;
+    }
 
-        .company-address {
-            margin-top: 12px;
-            font-size: 12px;
-            line-height: 15px;
-            color: #595959;
-            word-wrap: break-word;
-        }
+    .company-address-container {
+        width: 50%;
+        margin-bottom: 2px;
+        padding-right: 60px;
+    }
 
-        /* -- Content Wrapper  */
+    .company-address {
+        margin-top: 12px;
+        font-size: 12px;
+        line-height: 15px;
+        color: #595959;
+        word-wrap: break-word;
+    }
 
-        .content-wrapper {
-            display: block;
-            padding-top: 0px;
-            padding-bottom: 20px;
-        }
+    /* -- Content Wrapper  */
 
-        .customer-address-container {
-            display: block;
-            float: left;
-            width: 45%;
-            padding: 10px 0 0 30px;
-        }
+    .content-wrapper {
+        display: block;
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
 
-        /* -- Shipping -- */
-        .shipping-address-container {
-            float: right;
-            display: block;
-        }
+    .customer-address-container {
+        display: block;
+        float: left;
+        width: 45%;
+        padding: 10px 0 0 30px;
+    }
 
-        .shipping-address-container--left {
-            float: left;
-            display: block;
-            padding-left: 0;
-        }
+    /* -- Shipping -- */
+    .shipping-address-container {
+        float: right;
+        display: block;
+    }
 
-        .shipping-address {
-            font-size: 10px;
-            line-height: 15px;
-            color: #595959;
-            margin-top: 5px;
-            width: 160px;
-            word-wrap: break-word;
-        }
+    .shipping-address-container--left {
+        float: left;
+        display: block;
+        padding-left: 0;
+    }
 
-        /* -- Billing -- */
+    .shipping-address {
+        font-size: 10px;
+        line-height: 15px;
+        color: #595959;
+        margin-top: 5px;
+        width: 160px;
+        word-wrap: break-word;
+    }
 
-        .billing-address-container {
-            display: block;
-            float: left;
-        }
+    /* -- Billing -- */
 
-        .billing-address {
-            font-size: 10px;
-            line-height: 15px;
-            color: #595959;
-            margin-top: 5px;
-            width: 160px;
-            word-wrap: break-word;
-        }
+    .billing-address-container {
+        display: block;
+        float: left;
+    }
 
-        /*  -- Estimate Details -- */
+    .billing-address {
+        font-size: 10px;
+        line-height: 15px;
+        color: #595959;
+        margin-top: 5px;
+        width: 160px;
+        word-wrap: break-word;
+    }
 
-        .invoice-details-container {
-            display: block;
-            float: right;
-            padding: 10px 30px 0 0;
-        }
+    /*  -- Estimate Details -- */
 
-        .attribute-label {
-            font-size: 12px;
-            line-height: 18px;
-            text-align: left;
-            color: #55547A
-        }
+    .invoice-details-container {
+        display: block;
+        float: right;
+        padding: 10px 30px 0 0;
+    }
 
-        .attribute-value {
-            font-size: 12px;
-            line-height: 18px;
-            text-align: right;
-        }
+    .attribute-label {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: left;
+        color: #55547A
+    }
 
-        /* -- Items Table -- */
+    .attribute-value {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: right;
+    }
 
-        .items-table {
-            margin-top: 35px;
-            padding: 0px 30px 10px 30px;
-            page-break-before: avoid;
-            page-break-after: auto;
-        }
+    /* -- Items Table -- */
 
-        .items-table hr {
-            height: 0.1px;
-        }
+    .items-table {
+        margin-top: 35px;
+        padding: 0px 30px 10px 30px;
+        page-break-before: avoid;
+        page-break-after: auto;
+    }
 
-        .item-table-heading {
-            font-size: 13.5;
-            text-align: center;
-            color: rgba(0, 0, 0, 0.85);
-            padding: 5px;
-            color: #55547A;
-        }
+    .items-table hr {
+        height: 0.1px;
+    }
 
-        tr.item-table-heading-row th {
-            border-bottom: 0.620315px solid #E8E8E8;
-            font-size: 12px;
-            line-height: 18px;
-        }
+    .item-table-heading {
+        font-size: 13.5;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.85);
+        padding: 5px;
+        color: #55547A;
+    }
 
-        tr.item-row td {
-            font-size: 12px;
-            line-height: 18px;
-        }
+    tr.item-table-heading-row th {
+        border-bottom: 0.620315px solid #E8E8E8;
+        font-size: 12px;
+        line-height: 18px;
+    }
 
-        .item-cell {
-            font-size: 13;
-            text-align: center;
-            padding: 5px;
-            padding-top: 10px;
-            color: #040405;
-        }
+    tr.item-row td {
+        font-size: 12px;
+        line-height: 18px;
+    }
 
-        .item-description {
-            color: #595959;
-            font-size: 9px;
-            line-height: 12px;
-        }
+    .item-cell {
+        font-size: 13;
+        text-align: center;
+        padding: 5px;
+        padding-top: 10px;
+        color: #040405;
+    }
 
-        .item-cell-table-hr {
-            margin: 0 30px 0 30px;
-        }
+    .item-description {
+        color: #595959;
+        font-size: 9px;
+        line-height: 12px;
+    }
 
-        /* -- Total Display Table -- */
+    .item-cell-table-hr {
+        margin: 0 30px 0 30px;
+    }
 
-        .total-display-container {
-            padding: 0 25px;
-        }
+    /* -- Total Display Table -- */
+
+    .total-display-container {
+        padding: 0 25px;
+    }
 
 
-        .total-display-table {
-            border-top: none;
-            page-break-inside: avoid;
-            page-break-before: auto;
-            page-break-after: auto;
-            margin-top: 20px;
-            float: right;
-            width: auto;
-        }
+    .total-display-table {
+        border-top: none;
+        page-break-inside: avoid;
+        page-break-before: auto;
+        page-break-after: auto;
+        margin-top: 20px;
+        float: right;
+        width: auto;
+    }
 
-        .total-table-attribute-label {
-            font-size: 12px;
-            color: #55547A;
-            text-align: left;
-            padding-left: 10px;
-        }
+    .total-table-attribute-label {
+        font-size: 12px;
+        color: #55547A;
+        text-align: left;
+        padding-left: 10px;
+    }
 
-        .total-table-attribute-value {
-            font-weight: bold;
-            text-align: right;
-            font-size: 12px;
-            color: #040405;
-            padding-right: 10px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
+    .total-table-attribute-value {
+        font-weight: bold;
+        text-align: right;
+        font-size: 12px;
+        color: #040405;
+        padding-right: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
 
-        .total-border-left {
-            border: 1px solid #E8E8E8 !important;
-            border-right: 0px !important;
-            padding-top: 0px;
-            padding: 8px !important;
-        }
+    .total-border-left {
+        border: 1px solid #E8E8E8 !important;
+        border-right: 0px !important;
+        padding-top: 0px;
+        padding: 8px !important;
+    }
 
-        .total-border-right {
-            border: 1px solid #E8E8E8 !important;
-            border-left: 0px !important;
-            padding-top: 0px;
-            padding: 8px !important;
-        }
+    .total-border-right {
+        border: 1px solid #E8E8E8 !important;
+        border-left: 0px !important;
+        padding-top: 0px;
+        padding: 8px !important;
+    }
 
-        /* -- Notes -- */
-        .notes {
-            font-size: 12px;
-            color: #595959;
-            margin-top: 15px;
-            margin-left: 30px;
-            width: 442px;
-            text-align: left;
-            page-break-inside: avoid;
-        }
+    /* -- Notes -- */
+    .notes {
+        font-size: 12px;
+        color: #595959;
+        margin-top: 15px;
+        margin-left: 30px;
+        width: 442px;
+        text-align: left;
+        page-break-inside: avoid;
+    }
 
-        .notes-label {
-            font-size: 15px;
-            line-height: 22px;
-            letter-spacing: 0.05em;
-            color: #040405;
-            width: 108px;
-            white-space: nowrap;
-            height: 19.87px;
-            padding-bottom: 10px;
-        }
+    .notes-label {
+        font-size: 15px;
+        line-height: 22px;
+        letter-spacing: 0.05em;
+        color: #040405;
+        width: 108px;
+        white-space: nowrap;
+        height: 19.87px;
+        padding-bottom: 10px;
+    }
 
-        /* -- Helpers -- */
+    /* -- Helpers -- */
 
-        .text-primary {
-            color: #5851DB;
-        }
+    .text-primary {
+        color: #5851DB;
+    }
 
-        .text-center {
-            text-align: center
-        }
+    .text-center {
+        text-align: center
+    }
 
-        table .text-left {
-            text-align: left;
-        }
+    table .text-left {
+        text-align: left;
+    }
 
-        table .text-right {
-            text-align: right;
-        }
+    table .text-right {
+        text-align: right;
+    }
 
-        .border-0 {
-            border: none;
-        }
+    .border-0 {
+        border: none;
+    }
 
-        .py-2 {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
+    .py-2 {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
 
-        .py-8 {
-            padding-top: 8px;
-            padding-bottom: 8px;
-        }
+    .py-8 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
 
-        .py-3 {
-            padding: 3px 0;
-        }
+    .py-3 {
+        padding: 3px 0;
+    }
 
-        .pr-20 {
-            padding-right: 20px;
-        }
+    .pr-20 {
+        padding-right: 20px;
+    }
 
-        .pr-10 {
-            padding-right: 10px;
-        }
+    .pr-10 {
+        padding-right: 10px;
+    }
 
-        .pl-20 {
-            padding-left: 20px;
-        }
+    .pl-20 {
+        padding-left: 20px;
+    }
 
-        .pl-10 {
-            padding-left: 10px;
-        }
+    .pl-10 {
+        padding-left: 10px;
+    }
 
-        .pl-0 {
-            padding-left: 0;
-        }
+    .pl-0 {
+        padding-left: 0;
+    }
 
-        #watermark {
-            opacity: .05;
-                position: fixed;
-                bottom:   0px;
-                left:     0px;
-                /** The width and height may change 
-                    according to the dimensions of your letterhead
-                **/
-                width:    44cm;
-                height:   22cm;
-
-                /** Your watermark should be behind every content**/
-                z-index:  -1000;
-            }
-
+   
     </style>
 
     @if (App::isLocale('th'))
-        @include('app.pdf.locale.th')
+    @include('app.pdf.locale.th')
     @endif
 </head>
 
@@ -333,9 +327,9 @@
             <tr>
                 <td width="50%" class="header-section-left">
                     @if ($logo)
-                        <img class="header-logo" style="height: 50px;" src="{{ $logo }}" alt="Company Logo">
+                    <img class="header-logo" style="height: 50px;" src="{{ $logo }}" alt="Company Logo">
                     @else
-                        <h1 class="header-logo"> {{ $invoice->customer->company->name }} </h1>
+                    <h1 class="header-logo"> {{ $invoice->customer->company->name }} </h1>
                     @endif
                 </td>
                 <td width="50%" class="text-right company-address-container company-address">
@@ -345,22 +339,25 @@
         </table>
     </div>
 
-    <hr class="header-bottom-divider">
+    <hr class="header-bottom-divider" style="border: 0.620315px solid #E8E8E8;">
+
+    <h4 style="text-align:center;">{{$invoice->getCustomFieldValueBySlug('CUSTOM_INVOICE_TYPE')}}</h4>
 
     <div class="content-wrapper">
         <div class="main-content">
             <div class="customer-address-container">
                 <div class="billing-address-container billing-address">
                     @if ($billing_address)
-                        <b>@lang('pdf_bill_to')</b> <br>
-                        {!! $billing_address !!}
+                    <b>@lang('pdf_bill_to')</b> <br>
+                    {!! $billing_address !!}
                     @endif
                 </div>
 
-                <div @if ($billing_address !== '</br>') class="shipping-address-container shipping-address" @else class="shipping-address-container--left shipping-address" @endif>
+                <div @if ($billing_address !=='</br>' ) class="shipping-address-container shipping-address" @else
+                    class="shipping-address-container--left shipping-address" @endif>
                     @if ($shipping_address)
-                        <b>@lang('pdf_ship_to')</b> <br>
-                        {!! $shipping_address !!}
+                    <b>@lang('pdf_ship_to')</b> <br>
+                    {!! $shipping_address !!}
                     @endif
                 </div>
                 <div style="clear: both;"></div>
@@ -389,14 +386,15 @@
 
         <div class="notes">
             @if ($notes)
-                <div class="notes-label">
-                    @lang('pdf_notes')
-                </div>
+            <div class="notes-label">
+                @lang('pdf_notes')
+            </div>
 
-                {!! $notes !!}
+            {!! $notes !!}
             @endif
         </div>
     </div>
+    @include('app.pdf.invoice.partials.footer')
 </body>
 
 </html>
