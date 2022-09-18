@@ -1,6 +1,6 @@
 <style>
 #watermark {
-    opacity: .05;
+    opacity: .2;
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -178,5 +178,6 @@
 
 <div class="notes" style="text-transform: capitalize;">
     <p><b>Amount In Words</b></p>
-    <p>{{amountInWords( round($invoice->total/100.00) )}}</p>
+    @if(0)<p>{{amountInWordsUSD( round($invoice->total/100.00) )}}</p>@endif
+    <p>{{amountInWordsUSD( $invoice->total/100.00 )}}</p>
 </div>
