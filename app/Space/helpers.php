@@ -250,7 +250,7 @@ function amountInWords(float $number)
 
 function amountInWordsUSD($number){ 
     // return $number;
-    $number = '2000.00';
+    // $number = '2000.00';
     $word = numberToWord($number) . '  Dirhams';
     //echo $word;
     
