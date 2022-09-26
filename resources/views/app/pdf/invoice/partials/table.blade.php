@@ -166,8 +166,9 @@
                 {!! format_money_pdf($invoice->total, $invoice->customer->currency)!!}
             </td>
         </tr>
+        
         <tr>
-            <td class="border-0 total-table-attribute-label" colspan="2">
+            <td class="border-0 total-table-attribute-label" style="height:300px" colspan="2">
 
                 <img style="height:200px" src="{{public_path()}}/stamp.png" alt="Company Logo">
             </td>

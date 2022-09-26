@@ -23,14 +23,14 @@
     }
 
     hr {
-        color: rgba(0, 0, 0, 0.2);
-        border: 0.5px solid #EAF1FB;
+        color: rgba(0, 0, 0, 0.9);
+        border: 0.5px solid gray;
     }
 
     /* -- Header -- */
 
     .header-bottom-divider {
-        color: rgba(0, 0, 0, 0.7);
+        color: gray;
         top: 90px;
         left: 0px;
         width: 100%;
@@ -159,7 +159,7 @@
     }
 
     tr.item-table-heading-row th {
-        border-bottom: 0.620315px solid #E8E8E8;
+        border-bottom: 0.620315px solid gray;
         font-size: 12px;
         line-height: 18px;
     }
@@ -222,14 +222,14 @@
     }
 
     .total-border-left {
-        border: 1px solid #E8E8E8 !important;
+        border: 1px solid gray !important;
         border-right: 0px !important;
         padding-top: 0px;
         padding: 8px !important;
     }
 
     .total-border-right {
-        border: 1px solid #E8E8E8 !important;
+        border: 1px solid gray !important;
         border-left: 0px !important;
         padding-top: 0px;
         padding: 8px !important;
@@ -339,7 +339,7 @@
         </table>
     </div>
 
-    <hr class="header-bottom-divider" style="border: 0.620315px solid #E8E8E8;">
+    <hr class="header-bottom-divider">
 
     <h4 style="text-align:center;">{{$invoice->getCustomFieldValueBySlug('CUSTOM_INVOICE_TYPE')}}</h4>
 

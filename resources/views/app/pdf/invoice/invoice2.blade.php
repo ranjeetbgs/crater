@@ -222,7 +222,7 @@
         }
 
         tr.item-table-heading-row th {
-            border-bottom: 0.620315px solid #E8E8E8;
+            border-bottom: 0.620315px solid gray;
             font-size: 12px;
             line-height: 18px;
         }
@@ -284,14 +284,14 @@
         }
 
         .total-border-left {
-            border: 1px solid #E8E8E8 !important;
+            border: 1px solid gray !important;
             border-right: 0px !important;
             padding-top: 0px;
             padding: 8px !important;
         }
 
         .total-border-right {
-            border: 1px solid #E8E8E8 !important;
+            border: 1px solid gray !important;
             border-left: 0px !important;
             padding-top: 0px;
             padding: 8px !important;
