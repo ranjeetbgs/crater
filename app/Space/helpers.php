@@ -312,8 +312,9 @@ function amountInWordsUSD($num){
                 "Quadrillion" 
                 ); //limit t quadrillion 
     $num = number_format($num,2,".",","); 
-    // return $num;
+     //return $num;
     $num_arr = explode(".",$num); 
+    // return $num_arr[0];
     $wholenum = $num_arr[0]; 
     $decnum = $num_arr[1]; 
     $whole_arr = array_reverse(explode(",",$wholenum)); 
@@ -321,7 +322,7 @@ function amountInWordsUSD($num){
     $rettxt = ""; 
     foreach($whole_arr as $key => $i){ 
         if($i < 20){ 
-            $rettxt .= $ones[$i]; 
+            $rettxt .= @$ones[$i]; 
         }
         elseif($i < 100){ 
             $rettxt .= $tens[substr($i,0,1)]; 
