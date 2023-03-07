@@ -85,14 +85,18 @@
     <!-- Customer View Sidebar -->
     <CustomerViewSidebar />
 
+    
     <!-- Chart -->
     <CustomerChart />
+
+    <Ledger/>
   </BasePage>
 </template>
 
 <script setup>
 import CustomerViewSidebar from './partials/CustomerViewSidebar.vue'
 import CustomerChart from './partials/CustomerChart.vue'
+import Ledger from './partials/Ledger.vue'
 import { ref, computed, inject } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'

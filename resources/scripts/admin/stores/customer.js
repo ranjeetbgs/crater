@@ -19,7 +19,7 @@ export const useCustomerStore = (useWindow = false) => {
       totalCustomers: 0,
       selectAllField: false,
       selectedCustomers: [],
-      selectedViewCustomer: {},
+      selectedViewCustomer: {ledger:[]},
       isFetchingInitialSettings: false,
       isFetchingViewData: false,
       currentCustomer: {
@@ -98,6 +98,7 @@ export const useCustomerStore = (useWindow = false) => {
             .then((response) => {
               this.selectedViewCustomer = {}
               Object.assign(this.selectedViewCustomer, response.data.data)
+              this.selectedViewCustomer.ledger = response.data.meta.ledger
               this.setAddressStub(response.data.data)
               this.isFetchingViewData = false
               resolve(response)

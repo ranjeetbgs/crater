@@ -5,6 +5,7 @@ namespace Crater\Http\Controllers\V1\Admin\Customer;
 use Carbon\Carbon;
 use Crater\Http\Controllers\Controller;
 use Crater\Http\Resources\CustomerResource;
+use Crater\Http\Resources\InvoiceResource;
 use Crater\Models\CompanySetting;
 use Crater\Models\Customer;
 use Crater\Models\Expense;
@@ -134,9 +135,52 @@ class CustomerStatsController extends Controller
 
         $customer = Customer::find($customer->id);
 
+
+        
+        $invoices = Invoice::whereCompany()
+            ->whereCustomer($customer->id)->get();
+        $invoices = $invoices->map(function ($invoice) {
+                return [
+                    'id'            => $invoice->invoice_number,
+                   'date' => $invoice->invoice_date->timestamp,
+                   'notes'=> strip_tags($invoice->notes),
+                    'formatted_date'         => $invoice->formatted_invoice_date,
+                    'credit' => null,
+                    'debit'     => $invoice->total,
+                ];
+            });
+
+            // dd( $invoices);
+
+
+        $payments = Payment::whereCompany()
+                ->whereCustomer($customer->id)->get();
+
+
+        $payments = $payments->map(function ($payment) {
+            return [
+                'id'            => $payment->payment_number,
+                'date'         => $payment->payment_date->timestamp,
+                'notes'=> $payment->notes,
+                'formatted_date'         => $payment->formattedPaymentDate,
+                
+                'credit'     => $payment->amount,
+                'debit' => null,
+            ];
+        });
+
+        
+
+        $ledger = $invoices->merge($payments);
+        $ledger = $ledger->sortByDesc('date')->values()->all();
+
         return (new CustomerResource($customer))
             ->additional(['meta' => [
-                'chartData' => $chartData
+                'chartData' => $chartData,
+                'ledger'=> $ledger
+
+
+
             ]]);
     }
 }
