@@ -25,6 +25,7 @@
 </head>
 
 <body
+    style="zoom:90%"
     class="h-full overflow-hidden bg-gray-100 font-base
     @if(isset($current_theme)) theme-{{ $current_theme }} @else theme-{{get_app_setting('admin_portal_theme') ?? 'crater'}} @endif ">
 
