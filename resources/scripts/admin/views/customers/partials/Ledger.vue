@@ -19,6 +19,17 @@
           :columns="ledgerColumns"
           :loading="customerStore.isFetchingViewData"
         >
+
+        <template #cell-number="{ row }">
+          <router-link :to="{ path: '/admin/'+row.data?.url }">
+            <BaseText
+              :text="row.data?.number"
+              :length="30"
+              tag="span"
+              class="font-medium text-primary-500 flex flex-col"
+            />
+          </router-link>
+        </template>
           
         <template #cell-notes="{ row }">
         <span v-html="row.data.notes" :title="row.data.notes"></span>
@@ -62,7 +73,7 @@ const userStore = useUserStore()
 const ledgerColumns = computed(() => {
   return [
     {
-      key: 'id',
+      key: 'number',
       label: t('dashboard.recent_invoices_card.due_on'),
       sortable: false,
     },

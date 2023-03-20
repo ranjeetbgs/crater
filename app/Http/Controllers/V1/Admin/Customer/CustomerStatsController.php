@@ -141,7 +141,8 @@ class CustomerStatsController extends Controller
             ->whereCustomer($customer->id)->get();
         $invoices = $invoices->map(function ($invoice) {
                 return [
-                    'id'            => $invoice->invoice_number,
+                    'number'            => $invoice->invoice_number,
+                    'url' => 'invoices/'.$invoice->id.'/view',
                    'date' => $invoice->invoice_date->timestamp,
                    'notes'=> strip_tags($invoice->notes),
                     'formatted_date'         => $invoice->formatted_invoice_date,
@@ -159,7 +160,8 @@ class CustomerStatsController extends Controller
 
         $payments = $payments->map(function ($payment) {
             return [
-                'id'            => $payment->payment_number,
+                'url' => 'payments/'.$payment->id.'/view',
+                'number'            => $payment->payment_number,
                 'date'         => $payment->payment_date->timestamp,
                 'notes'=> $payment->notes,
                 'formatted_date'         => $payment->formattedPaymentDate,

@@ -3,6 +3,20 @@
   <BasePage class="xl:pl-96">
     <BasePageHeader :title="pageTitle">
       <template #actions>
+
+        <a :href=" `https://api.whatsapp.com/send?phone=91${payment.customer?.phone}&text=Hey, ${payment.customer?.name}.%0aYour payment of INR ${payment?.amount/100} has been received. Thank you!
+        %0aDownload Receipt: ${globalStore.config.base_url + shareableLink}`"
+        class="mr-5 text-primary-500 flex flex-col"
+          v-if="userStore.hasAbilities(abilities.SEND_PAYMENT)"
+
+          target= '_blank'
+          
+        >
+        <BaseIcon
+              name="ShareIcon"
+            />
+      </a>
+
         <BaseButton
           v-if="userStore.hasAbilities(abilities.SEND_PAYMENT)"
           :content-loading="isFetching"
@@ -11,6 +25,10 @@
         >
           {{ $t('payments.send_payment_receipt') }}
         </BaseButton>
+
+        
+
+
 
         <PaymentDropdown
           :content-loading="isFetching"
@@ -259,6 +277,7 @@ import { useDialogStore } from '@/scripts/stores/dialog'
 import { usePaymentStore } from '@/scripts/admin/stores/payment'
 import { useModalStore } from '@/scripts/stores/modal'
 import { useUserStore } from '@/scripts/admin/stores/user'
+import { useGlobalStore } from '@/scripts/admin/stores/global'
 
 import PaymentDropdown from '@/scripts/admin/components/dropdowns/PaymentIndexDropdown.vue'
 import SendPaymentModal from '@/scripts/admin/components/modal-components/SendPaymentModal.vue'
@@ -282,6 +301,8 @@ let isFetching = ref(false)
 const paymentStore = usePaymentStore()
 const modalStore = useModalStore()
 const userStore = useUserStore()
+
+const globalStore = useGlobalStore()
 
 const paymentList = ref(null)
 const currentPageNumber = ref(1)
