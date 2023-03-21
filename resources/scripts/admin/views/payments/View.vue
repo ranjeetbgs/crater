@@ -4,12 +4,14 @@
     <BasePageHeader :title="pageTitle">
       <template #actions>
 
-        <a :href=" `https://api.whatsapp.com/send?phone=91${payment.customer?.phone}&text=Hey, ${payment.customer?.name}.%0aYour payment of INR ${payment?.amount/100} has been received. Thank you!
+        <a 
+        v-if="!isFetching && userStore.hasAbilities(abilities.SEND_PAYMENT)"
+        :href=" `https://api.whatsapp.com/send?phone=91${payment.customer?.phone}&text=Hey, ${payment.customer?.name}.%0aYour payment of INR ${payment?.amount/100} has been received. Thank you!
         %0aDownload Receipt: ${globalStore.config.base_url + shareableLink}`"
         class="mr-5 text-primary-500 flex flex-col"
-          v-if="userStore.hasAbilities(abilities.SEND_PAYMENT)"
 
           target= '_blank'
+        
           
         >
         <BaseIcon
